@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { TEMAS } from "@/lib/temas";
 import { HomeProgress } from "@/components/HomeProgress";
 import { ModuleList } from "@/components/ModuleList";
@@ -6,22 +5,14 @@ import { ModuleList } from "@/components/ModuleList";
 export default function HomePage() {
   return (
     <div className="max-w-3xl p-8">
-      <div className="mb-8 flex items-start justify-between gap-4">
-        <div>
-          <h1 className="mb-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-            Curso QA Junior para Pleno
-          </h1>
-          <p className="text-zinc-600 dark:text-zinc-400">
+      <div className="mb-8">
+        <h1 className="mb-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          Curso QA Junior para Pleno
+        </h1>
+        <p className="text-zinc-600 dark:text-zinc-400">
           Curso completo alinhado ao syllabus CTFL 4.0. Estude no seu ritmo,
           responda às questões e avance tema a tema.
         </p>
-        </div>
-        <Link
-          href="/?perfil=professor"
-          className="shrink-0 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800 transition-colors hover:bg-amber-100 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-200 dark:hover:bg-amber-900/30"
-        >
-          Modo Professor
-        </Link>
       </div>
 
       <div className="mb-8">
