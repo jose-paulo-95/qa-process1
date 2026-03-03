@@ -1,0 +1,336 @@
+# Template de Test Plan
+
+## 1. Informações do Documento
+
+**ID do Test Plan**: [AUTO-GERADO PELO JIRA]  
+**Nome do Test Plan**: [Nome descritivo do plano de teste]  
+**Versão**: 1.0  
+**Data de Criação**: [DD/MM/AAAA]  
+**Autor**: [Nome do QA]  
+**Aprovado por**: [Nome do QA Lead/Manager]  
+**Data de Aprovação**: [DD/MM/AAAA]  
+**Status**: [Rascunho / Aprovado / Em Execução / Concluído]
+
+---
+
+## 2. Visão Geral
+
+### 2.1 Objetivo
+[Descrever o objetivo principal deste plano de teste. O que se pretende validar?]
+
+**Exemplo**: 
+"Validar a funcionalidade de checkout do e-commerce, garantindo que usuários possam finalizar compras com diferentes métodos de pagamento."
+
+### 2.2 Escopo
+
+#### 2.2.1 No Escopo (O que será testado)
+- [Funcionalidade 1]
+- [Funcionalidade 2]
+- [Funcionalidade 3]
+- [Listar todas as funcionalidades que serão testadas]
+
+#### 2.2.2 Fora do Escopo (O que NÃO será testado)
+- [Funcionalidade que não será testada e motivo]
+- [Outra funcionalidade e motivo]
+- [Listar funcionalidades explicitamente excluídas]
+
+### 2.3 Referências
+- **Story/Feature**: [Link para story no Jira]
+- **Documentação de Requisitos**: [Link ou referência]
+- **Especificações Técnicas**: [Link ou referência]
+- **Design/Protótipo**: [Link ou referência]
+- **Bugs Relacionados**: [IDs de bugs relacionados]
+
+---
+
+## 3. Estratégia de Teste
+
+### 3.1 Tipos de Teste
+
+#### 3.1.1 Testes Funcionais
+- **Objetivo**: Validar se a funcionalidade atende aos requisitos
+- **Abordagem**: Testes baseados em requisitos e casos de uso
+- **Cobertura**: [Descrever cobertura esperada]
+
+#### 3.1.2 Testes de Regressão
+- **Objetivo**: Garantir que mudanças não quebraram funcionalidades existentes
+- **Abordagem**: [Descrever abordagem]
+- **Cobertura**: Funcionalidades críticas relacionadas
+
+#### 3.1.3 Testes de Integração
+- **Objetivo**: Validar integração entre componentes
+- **Abordagem**: [Descrever abordagem]
+- **Cobertura**: [APIs, serviços, integrações externas]
+
+#### 3.1.4 Testes de Performance (se aplicável)
+- **Objetivo**: Validar performance e tempo de resposta
+- **Abordagem**: [Descrever abordagem]
+- **Cobertura**: [Endpoints/páginas críticas]
+
+#### 3.1.5 Testes de Segurança (se aplicável)
+- **Objetivo**: Identificar vulnerabilidades
+- **Abordagem**: [Descrever abordagem]
+- **Cobertura**: [Autenticação, autorização, dados sensíveis]
+
+#### 3.1.6 Testes de Usabilidade (se aplicável)
+- **Objetivo**: Validar experiência do usuário
+- **Abordagem**: [Descrever abordagem]
+- **Cobertura**: [Fluxos principais, interface]
+
+### 3.2 Níveis de Teste
+
+- **Unitário**: [Responsabilidade do desenvolvedor]
+- **Integração**: [Responsabilidade do QA]
+- **Sistema**: [Responsabilidade do QA]
+- **Aceitação (UAT)**: [Responsabilidade do Product Owner]
+
+### 3.3 Técnicas de Teste
+
+- **Testes Baseados em Especificação**: [Casos de teste baseados em requisitos]
+- **Testes Baseados em Experiência**: [Testes exploratórios]
+- **Testes Baseados em Estrutura**: [Testes de cobertura de código]
+- **Testes Baseados em Riscos**: [Foco em áreas de maior risco]
+
+---
+
+## 4. Ambiente de Teste
+
+### 4.1 Ambientes
+
+| Ambiente | URL/Endpoint | Propósito | Responsável |
+|----------|--------------|-----------|-------------|
+| QA/Teste | [URL] | Testes funcionais principais | QA |
+| Staging | [URL] | Testes finais antes de produção | QA |
+| Produção | [URL] | Monitoramento (não testes) | - |
+
+### 4.2 Configurações
+
+**Navegadores Suportados**:
+- [ ] Chrome [Versões: _____]
+- [ ] Firefox [Versões: _____]
+- [ ] Safari [Versões: _____]
+- [ ] Edge [Versões: _____]
+
+**Dispositivos** (se aplicável):
+- Desktop
+- Tablet
+- Mobile (iOS e Android)
+
+**Dados de Teste**:
+- [Descrever dados necessários]
+- [Como obter/preparar dados]
+- [Dados específicos para cada cenário]
+
+### 4.3 Ferramentas
+
+- **Gestão de Testes**: Jira
+- **Testes de API**: Postman
+- **Automação**: [Selenium/Cypress/etc.]
+- **Performance**: [JMeter/K6/etc.]
+- **Outras**: [Listar outras ferramentas]
+
+---
+
+## 5. Recursos
+
+### 5.1 Equipe
+
+| Papel | Nome | Responsabilidades |
+|-------|------|-------------------|
+| QA Lead | [Nome] | Aprovação, revisão |
+| QA Tester | [Nome] | Execução de testes |
+| Desenvolvedor | [Nome] | Suporte técnico |
+| Product Owner | [Nome] | Validação de requisitos |
+
+### 5.2 Estimativa de Esforço
+
+| Atividade | Esforço Estimado | Responsável |
+|-----------|------------------|-------------|
+| Análise e Planejamento | [X horas] | QA |
+| Criação de Casos de Teste | [X horas] | QA |
+| Execução de Testes Funcionais | [X horas] | QA |
+| Execução de Testes de Regressão | [X horas] | QA |
+| Reporte de Bugs | [X horas] | QA |
+| Reteste de Bugs | [X horas] | QA |
+| **TOTAL** | **[X horas]** | |
+
+### 5.3 Cronograma
+
+| Fase | Data Início | Data Fim | Status |
+|------|-------------|----------|--------|
+| Planejamento | [DD/MM/AAAA] | [DD/MM/AAAA] | [ ] |
+| Criação de Casos de Teste | [DD/MM/AAAA] | [DD/MM/AAAA] | [ ] |
+| Execução de Testes | [DD/MM/AAAA] | [DD/MM/AAAA] | [ ] |
+| Reteste de Bugs | [DD/MM/AAAA] | [DD/MM/AAAA] | [ ] |
+| Relatório Final | [DD/MM/AAAA] | [DD/MM/AAAA] | [ ] |
+
+---
+
+## 6. Riscos e Mitigações
+
+### 6.1 Riscos Identificados
+
+| Risco | Probabilidade | Impacto | Mitigação | Responsável |
+|-------|---------------|---------|-----------|-------------|
+| Ambiente instável | Alta | Alto | Ter ambiente backup, comunicar problemas rapidamente | DevOps |
+| Requisitos não claros | Média | Alto | Reuniões de alinhamento, documentação | PO/QA |
+| Prazo apertado | Alta | Médio | Priorizar testes críticos, automação | QA |
+| Dependências externas | Média | Médio | Mockar serviços, testes isolados | Dev/QA |
+| Falta de dados de teste | Baixa | Médio | Preparar dados antecipadamente | QA |
+
+### 6.2 Contingências
+
+[Descrever planos de contingência para riscos críticos]
+
+---
+
+## 7. Critérios de Entrada (Entry Criteria)
+
+Os testes podem começar quando:
+
+- [ ] Código desenvolvido e deployado em ambiente de teste
+- [ ] Ambiente de teste estável e disponível
+- [ ] Dados de teste preparados
+- [ ] Requisitos claros e documentados
+- [ ] Test plan aprovado
+- [ ] Acesso ao ambiente concedido
+- [ ] Build estável disponível
+- [ ] Dependências resolvidas
+
+**Data de Entrada**: [DD/MM/AAAA]  
+**Aprovado por**: [Nome]
+
+---
+
+## 8. Critérios de Saída (Exit Criteria)
+
+Os testes podem ser considerados concluídos quando:
+
+- [ ] Todos os casos de teste críticos foram executados
+- [ ] Todos os bugs críticos (P1) foram corrigidos e retestados
+- [ ] Todos os bugs altos (P2) foram corrigidos e retestados
+- [ ] Testes de regressão executados
+- [ ] Cobertura de teste atingida: [X%]
+- [ ] Taxa de pass dos testes: [X%]
+- [ ] Aprovado pelo QA Lead
+- [ ] Aprovado pelo Product Owner (UAT)
+
+**Data de Saída**: [DD/MM/AAAA]  
+**Aprovado por**: [Nome]
+
+---
+
+## 9. Matriz de Rastreabilidade
+
+| ID Test Case | Requisito/Funcionalidade | Prioridade | Status | Bugs Encontrados |
+|--------------|--------------------------|------------|--------|------------------|
+| TC-001 | [Requisito 1] | Alta | [ ] Pass / [ ] Fail | [IDs] |
+| TC-002 | [Requisito 2] | Alta | [ ] Pass / [ ] Fail | [IDs] |
+| TC-003 | [Requisito 3] | Média | [ ] Pass / [ ] Fail | [IDs] |
+| ... | ... | ... | ... | ... |
+
+**Total de Casos de Teste**: [X]  
+**Total Executados**: [X]  
+**Total Passados**: [X]  
+**Total Falhados**: [X]  
+**Taxa de Pass**: [X%]
+
+---
+
+## 10. Casos de Teste
+
+### 10.1 Resumo
+
+**Total de Casos de Teste**: [X]
+
+**Por Prioridade**:
+- Alta: [X] casos
+- Média: [X] casos
+- Baixa: [X] casos
+
+**Por Tipo**:
+- Funcional: [X] casos
+- Regressão: [X] casos
+- Integração: [X] casos
+- Outros: [X] casos
+
+### 10.2 Lista de Casos de Teste
+
+[Link para suite de testes no Jira ou lista de IDs]
+
+**Exemplo**:
+- TC-001: Login com credenciais válidas
+- TC-002: Login com credenciais inválidas
+- TC-003: Recuperação de senha
+- ...
+
+---
+
+## 11. Automação
+
+### 11.1 Casos para Automação
+
+[Listar casos de teste que serão automatizados e justificativa]
+
+**Exemplo**:
+- TC-001: Login válido (executado frequentemente)
+- TC-005: Adicionar item ao carrinho (fluxo crítico)
+- ...
+
+### 11.2 Estratégia de Automação
+
+[Descrever estratégia: quais ferramentas, quando executar, etc.]
+
+---
+
+## 12. Métricas e Relatórios
+
+### 12.1 Métricas a Coletar
+
+- Número de casos de teste executados
+- Taxa de pass/fail
+- Número de bugs encontrados por severidade
+- Tempo de execução
+- Cobertura de requisitos
+
+### 12.2 Frequência de Relatórios
+
+- **Diário**: Status de execução
+- **Semanal**: Progresso geral, métricas
+- **Final**: Relatório completo
+
+### 12.3 Template de Relatório
+
+[Link para template de relatório ou descrever formato]
+
+---
+
+## 13. Aprovações
+
+| Papel | Nome | Data | Assinatura/Aprovação |
+|-------|------|------|----------------------|
+| QA Lead | [Nome] | [DD/MM/AAAA] | [ ] Aprovado |
+| Product Owner | [Nome] | [DD/MM/AAAA] | [ ] Aprovado |
+| Tech Lead | [Nome] | [DD/MM/AAAA] | [ ] Aprovado |
+
+---
+
+## 14. Histórico de Revisões
+
+| Versão | Data | Autor | Mudanças |
+|--------|------|-------|----------|
+| 1.0 | [DD/MM/AAAA] | [Nome] | Versão inicial |
+
+---
+
+## 15. Anexos
+
+- [Documentação de requisitos]
+- [Diagramas de fluxo]
+- [Prototipos/Designs]
+- [Outros documentos relevantes]
+
+---
+
+**Última atualização**: 2026-02-04  
+**Versão do Template**: 1.0

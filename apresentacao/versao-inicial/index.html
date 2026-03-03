@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processo de Qualidade QA - Versão Inicial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4A90E2 0%, #7B2CBF 100%);
+            color: #1a1a1a;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: rgba(255, 255, 255, 0.4);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #FFD700;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            padding: 60px 80px;
+            background: #FFFFFF;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow-y: auto;
+            animation: slideIn 0.5s ease;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            color: #666;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .slide h1 {
+            font-size: 3.5em;
+            color: #1E40AF;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .slide h2 {
+            font-size: 2.5em;
+            color: #7C3AED;
+            margin-bottom: 25px;
+            border-bottom: 4px solid #4A90E2;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .slide h3 {
+            font-size: 1.8em;
+            color: #1E40AF;
+            margin: 20px 0 15px 0;
+            font-weight: 600;
+        }
+
+        .slide p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .slide ul, .slide ol {
+            font-size: 1.2em;
+            line-height: 2;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .slide li {
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .slide li strong {
+            color: #1E40AF;
+            font-weight: 700;
+        }
+
+        .cover-slide {
+            text-align: center;
+            background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+            color: white !important;
+        }
+
+        .cover-slide h1 {
+            color: #FFFFFF !important;
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+
+        .cover-slide .subtitle {
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            opacity: 1;
+            font-weight: 500;
+            color: #FFFFFF !important;
+        }
+
+        .cover-slide .author {
+            font-size: 1.3em;
+            margin-top: 60px;
+            opacity: 1;
+            font-weight: 500;
+            color: #FFFFFF !important;
+        }
+
+        .cover-slide p {
+            color: #FFFFFF !important;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: #F0F4FF;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 6px solid #1E40AF;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.2);
+            border: 2px solid #E0E7FF;
+        }
+
+        .card h3 {
+            color: #1E40AF;
+            margin-top: 0;
+            font-weight: 700;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+            color: white !important;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+            border: 3px solid #FFD700;
+        }
+
+        .highlight-box h3 {
+            color: #FFFFFF !important;
+            margin-top: 0;
+            font-weight: 700;
+        }
+
+        .highlight-box p {
+            color: #FFFFFF !important;
+        }
+
+        .highlight-box ul, .highlight-box ol {
+            color: #FFFFFF !important;
+        }
+
+        .highlight-box li {
+            color: #FFFFFF !important;
+        }
+
+        .highlight-box strong {
+            color: #FFFFFF !important;
+        }
+
+        .kanban-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #F0F4FF;
+            border-radius: 10px;
+            border: 3px solid #1E40AF;
+        }
+
+        .kanban-column {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            margin: 0 5px;
+            border: 3px solid #1E40AF;
+            box-shadow: 0 3px 10px rgba(30, 64, 175, 0.3);
+        }
+
+        .kanban-column h4 {
+            color: #1E40AF;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .arrow {
+            font-size: 2.5em;
+            color: #1E40AF;
+            margin: 0 10px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+
+        table th {
+            background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+            color: white !important;
+            padding: 15px;
+            text-align: left;
+            font-weight: 700;
+            border: 2px solid #FFD700;
+        }
+
+        table td {
+            padding: 12px 15px;
+            border-bottom: 2px solid #E0E7FF;
+            font-weight: 500;
+        }
+
+        table tr:hover {
+            background: #F0F4FF;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+            color: white;
+            border: 3px solid #FFD700;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.5);
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(135deg, #7C3AED 0%, #1E40AF 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.7);
+            border-color: #FFD700;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: #9CA3AF;
+        }
+
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+            color: white !important;
+            border: 3px solid #FFD700;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.5);
+            z-index: 100;
+        }
+
+        .home-btn:hover {
+            background: linear-gradient(135deg, #7C3AED 0%, #1E40AF 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.7);
+            border-color: #FFD700;
+        }
+
+        .keyboard-hint {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            font-weight: 600;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.5);
+            border: 2px solid #FFD700;
+        }
+
+        .code-block {
+            background: #1a1a1a;
+            color: #E0E7FF;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            font-size: 1em;
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 30px;
+            }
+
+            .slide h1 {
+                font-size: 2em;
+            }
+
+            .slide h2 {
+                font-size: 1.8em;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .kanban-flow {
+                flex-direction: column;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progress"></div>
+    </div>
+
+    <div class="presentation-container">
+        <!-- Slide 1: Capa -->
+        <div class="slide active cover-slide">
+            <h1>Processo de Qualidade QA</h1>
+            <p class="subtitle">Versão Inicial – Menos burocracia, mais ação</p>
+            <p style="margin-top: 40px; font-size: 1.2em; opacity: 1; font-weight: 500;">2026</p>
+            <div class="slide-number">1 / 17</div>
+        </div>
+
+        <!-- Slide 2: Apresentação -->
+        <div class="slide">
+            <h2>Apresentação</h2>
+            <div style="margin-top: 30px;">
+                <p><strong>Objetivo desta apresentação:</strong></p>
+                <ul>
+                    <li>Apresentar a <strong>versão inicial</strong> do processo de QA</li>
+                    <li>Mostrar entrada de demandas simplificada (apenas 3 campos)</li>
+                    <li>Explicar o modelo de Kanban (fluxo completo)</li>
+                    <li>Definir cerimônias e papéis mínimos</li>
+                    <li>Indicar como evoluir para a versão completa</li>
+                </ul>
+            </div>
+            <div class="slide-number">2 / 17</div>
+        </div>
+
+        <!-- Slide 3: Quando usar -->
+        <div class="slide">
+            <h2>Quando usar esta versão</h2>
+            <div style="margin-top: 30px;">
+                <ul>
+                    <li>Equipes que estão <strong>começando</strong> o processo de QA</li>
+                    <li>Quando se busca <strong>agilidade</strong> em vez de formalidade</li>
+                    <li>Times <strong>menores</strong> ou com comunicação muito próxima</li>
+                </ul>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Princípios</h3>
+                <p style="color: white !important;">Praticidade • Menos burocracia • Fluxo contínuo</p>
+            </div>
+            <div class="slide-number">3 / 17</div>
+        </div>
+
+        <!-- Slide 4: Princípio - Entrada de demandas -->
+        <div class="slide">
+            <h2>Entrada de Demandas – Princípio</h2>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Menos burocracia, mais ação</h3>
+                <p style="color: white !important;">A demanda precisa ter apenas o <strong>essencial</strong> para que alguém consiga trabalhar.</p>
+            </div>
+            <p style="margin-top: 25px; font-size: 1.2em;">Sem formulários longos. Sem campos obrigatórios desnecessários.</p>
+            <div class="slide-number">4 / 17</div>
+        </div>
+
+        <!-- Slide 6: Campos obrigatórios -->
+        <div class="slide">
+            <h2>Campos Obrigatórios – Apenas 3</h2>
+            <div style="margin-top: 30px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Campo</th>
+                            <th>O que colocar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Título</strong></td>
+                            <td>O que precisa ser feito (ex: "Login com email e senha")</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Descrição</strong></td>
+                            <td>Contexto em 2-3 frases. O que, por que e para quem</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Critérios de Aceite</strong></td>
+                            <td>3-5 itens em formato checkbox. Como saber que está pronto</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 20px;"><strong>Pronto.</strong> Com isso já dá para colocar no Kanban e começar.</p>
+            <div class="slide-number">5 / 17</div>
+        </div>
+
+        <!-- Slide 7: Exemplo completo -->
+        <div class="slide">
+            <h2>Exemplo Completo</h2>
+            <div style="margin-top: 25px;">
+                <h3>Título</h3>
+                <div class="code-block">Login com email e senha</div>
+                <h3>Descrição</h3>
+                <div class="code-block">Permitir que o usuário faça login no sistema usando email e senha. Necessário para acessar a área logada do produto.</div>
+                <h3>Critérios de Aceite</h3>
+                <div class="code-block">- [ ] Usuário consegue entrar com email e senha válidos<br>
+- [ ] Mensagem de erro para credenciais inválidas<br>
+- [ ] Após login, redireciona para o dashboard<br>
+- [ ] Sessão mantida por 24h</div>
+            </div>
+            <div class="slide-number">6 / 17</div>
+        </div>
+
+        <!-- Slide 8: O que NÃO é obrigatório -->
+        <div class="slide">
+            <h2>O que NÃO é obrigatório (versão inicial)</h2>
+            <div style="margin-top: 30px;">
+                <ul>
+                    <li>❌ Story points / estimativa formal</li>
+                    <li>❌ Epic link</li>
+                    <li>❌ Requisitos técnicos detalhados</li>
+                    <li>❌ Design/UX aprovado (pode ir evoluindo)</li>
+                    <li>❌ Documentação de ambientes</li>
+                    <li>❌ Definition of Ready formal</li>
+                    <li>❌ Campos de prioridade complexos</li>
+                </ul>
+            </div>
+            <p style="margin-top: 20px; font-size: 1.1em;">Se precisar de algo disso, adicione <strong>apenas</strong> o que for necessário. Sem formulário gigante.</p>
+            <div class="slide-number">7 / 17</div>
+        </div>
+
+        <!-- Slide 9: Priorização -->
+        <div class="slide">
+            <h2>Priorização</h2>
+            <div style="margin-top: 30px;">
+                <p><strong>Simples:</strong> O que está mais em cima no Backlog / To Do tem prioridade.</p>
+                <p>Quem prioriza: Product Owner, coordenador ou quem cria as demandas.</p>
+                <p>Basta ordenar a lista. Sem campo de prioridade se não precisar.</p>
+            </div>
+            <div class="slide-number">8 / 17</div>
+        </div>
+
+        <!-- Slide 9: Quadro Kanban -->
+        <div class="slide">
+            <h2>Quadro Kanban</h2>
+            <div style="margin-top: 40px;">
+                <div class="kanban-flow">
+                    <div class="kanban-column">
+                        <h4>Backlog</h4>
+                        <p>Stories priorizadas</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="kanban-column">
+                        <h4>To Do</h4>
+                        <p>Prontas para trabalhar</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="kanban-column">
+                        <h4>In Development</h4>
+                        <p>WIP: 3-5</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="kanban-column" style="border-color: #10B981; background: #D1FAE5;">
+                        <h4 style="color: #047857;">Ready for Testing</h4>
+                        <p style="color: #047857; font-weight: 600;">WIP: 2-3</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="kanban-column" style="border-color: #10B981; background: #D1FAE5;">
+                        <h4 style="color: #047857;">In Testing</h4>
+                        <p style="color: #047857; font-weight: 600;">WIP: 2-3</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="kanban-column" style="border-color: #FFD700; background: #FEF3C7;">
+                        <h4 style="color: #92400E;">Ready for STG</h4>
+                        <p style="color: #92400E; font-weight: 600;">Pronta para staging</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="kanban-column" style="border-color: #7C3AED; background: #EDE9FE;">
+                        <h4 style="color: #5B21B6;">PO Validation</h4>
+                        <p style="color: #5B21B6; font-weight: 600;">Validação pelo PO</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="kanban-column" style="border-color: #10B981; background: #D1FAE5;">
+                        <h4 style="color: #047857;">Done</h4>
+                        <p style="color: #047857; font-weight: 600;">Aprovada e em produção</p>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">WIP Limits (Work In Progress)</h3>
+                <p style="color: white !important;">Limites definidos para evitar sobrecarga e focar em conclusão. Ajustados baseados em dados e capacidade da equipe.</p>
+            </div>
+            <div class="slide-number">9 / 17</div>
+        </div>
+
+        <!-- Slide 12: Regras do Kanban -->
+        <div class="slide">
+            <h2>Fluxo do Kanban</h2>
+            <div style="margin-top: 30px;">
+                <p>O fluxo segue sempre na ordem: <strong>Backlog → To Do → In Development → Ready for Testing → In Testing → Ready for STG → PO Validation → Done</strong>.</p>
+                <ul style="margin-top: 20px;">
+                    <li><strong>Dev</strong> pega de To Do, desenvolve e move para Ready for Testing</li>
+                    <li><strong>QA</strong> pega de Ready for Testing, testa (In Testing) e move para Ready for STG quando aprovado</li>
+                    <li><strong>PO</strong> valida em staging e aprova para Done</li>
+                    <li>Se houver bloqueio, o item pode voltar ou ficar em espera na coluna atual</li>
+                </ul>
+            </div>
+            <div class="slide-number">10 / 17</div>
+        </div>
+
+        <!-- Slide 11: Cerimônias -->
+        <div class="slide">
+            <h2>Cerimônias (Mínimas)</h2>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="card">
+                    <h3>Daily (15 min)</h3>
+                    <ul>
+                        <li>O que está em progresso?</li>
+                        <li>Algum bloqueio?</li>
+                        <li>Próximo passo?</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Alinhamento semanal (opcional, 30 min)</h3>
+                    <ul>
+                        <li>Priorizar o que vai para To Do</li>
+                        <li>Tirar dúvidas rápidas</li>
+                        <li>Não precisa ser formal</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-number">11 / 17</div>
+        </div>
+
+        <!-- Slide 12: Papéis -->
+        <div class="slide">
+            <h2>Papéis (Simplificados)</h2>
+            <div style="margin-top: 30px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Papel</th>
+                            <th>Responsabilidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Quem cria demanda</strong></td>
+                            <td>Garante que tenha título, descrição e critérios de aceite</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dev</strong></td>
+                            <td>Desenvolve e avisa quando pronto para teste</td>
+                        </tr>
+                        <tr>
+                            <td><strong>QA</strong></td>
+                            <td>Testa e aprova ou reporta bugs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Todos</strong></td>
+                            <td>Comunicam bloqueios no Daily</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="slide-number">12 / 17</div>
+        </div>
+
+        <!-- Slide 13: Definição de Pronto -->
+        <div class="slide">
+            <h2>Definição de Pronto (Simplificada)</h2>
+            <div style="margin-top: 30px;">
+                <p>Uma demanda está <strong>Done</strong> (pronta para produção) quando:</p>
+                <ul style="margin-top: 20px;">
+                    <li>✓ Código desenvolvido</li>
+                    <li>✓ Testado pelo QA (ou validado em par)</li>
+                    <li>✓ Funciona conforme critérios de aceite</li>
+                    <li>✓ Bugs críticos resolvidos (se houver)</li>
+                </ul>
+            </div>
+            <div class="slide-number">13 / 17</div>
+        </div>
+
+        <!-- Slide 14: Evolução -->
+        <div class="slide">
+            <h2>Evolução – Próximos passos</h2>
+            <div style="margin-top: 30px;">
+                <p>Quando a equipe crescer ou precisar de mais visibilidade:</p>
+                <ul style="margin-top: 20px;">
+                    <li>Adicionar Planning e Retrospectiva</li>
+                    <li>Implementar métricas completas e dashboards</li>
+                    <li>Usar templates detalhados (User Story completo, Test Plan, Test Case, Bug Report)</li>
+                    <li>Refinar WIP limits e políticas com base em dados</li>
+                </ul>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Documentos da versão final</h3>
+                <p style="color: white !important;">metodologia-trabalho.md e processo-qualidade.md em docs/</p>
+            </div>
+            <div class="slide-number">14 / 17</div>
+        </div>
+
+        <!-- Slide 15: Documentação desta versão -->
+        <div class="slide">
+            <h2>Documentação desta versão</h2>
+            <div style="margin-top: 30px;">
+                <ul>
+                    <li><strong>Metodologia de Trabalho</strong> – Kanban (mesmo modelo da versão completa)</li>
+                    <li><strong>Entrada de Demandas</strong> – Processo enxuto para criar demandas</li>
+                    <li><strong>Template de Demanda Simplificado</strong> – Campos essenciais apenas</li>
+                </ul>
+            </div>
+            <div class="slide-number">15 / 17</div>
+        </div>
+
+        <!-- Slide 16: Resumo -->
+        <div class="slide">
+            <h2>Resumo</h2>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Versão Inicial em uma frase</h3>
+                <p style="color: white !important;">3 campos na demanda (Título, Descrição, Critérios de Aceite) + mesmo Kanban (Backlog → To Do → In Development → Ready for Testing → In Testing → Ready for STG → PO Validation → Done) + Daily. Sem burocracia na entrada.</p>
+            </div>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="card">
+                    <h3>Para começar</h3>
+                    <p>Use o template simplificado e coloque as demandas no quadro.</p>
+                </div>
+                <div class="card">
+                    <h3>Para evoluir</h3>
+                    <p>Quando precisar de mais controle, migre para a versão completa.</p>
+                </div>
+            </div>
+            <div class="slide-number">16 / 17</div>
+        </div>
+
+        <!-- Slide 17: Q&A -->
+        <div class="slide cover-slide">
+            <button class="home-btn" onclick="showSlide(0)" title="Voltar ao início">🏠 Início</button>
+            <h1>Perguntas?</h1>
+            <div style="margin-top: 100px; font-size: 2em;">
+                <p>Obrigado pela atenção!</p>
+            </div>
+            <div class="slide-number">17 / 17</div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Anterior</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Próximo →</button>
+    </div>
+
+    <div class="keyboard-hint">
+        Use ← → ou Espaço para navegar
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            if (n >= totalSlides) {
+                currentSlide = 0;
+            } else if (n < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = n;
+            }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide].classList.add('active');
+
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                changeSlide(1);
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                changeSlide(-1);
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                showSlide(0);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                showSlide(totalSlides - 1);
+            }
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 50) changeSlide(1);
+            if (touchEndX > touchStartX + 50) changeSlide(-1);
+        });
+
+        showSlide(0);
+    </script>
+</body>
+</html>

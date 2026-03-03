@@ -1,0 +1,67 @@
+Questions,Types,Descriptions,Option1,Option2,Option3,Option4,Option5,Option6,Option7,Option8,Required
+"Avaliação QA Junior - Avaliação do Gestor
+Preencha durante e após a reunião de avaliação.",TITLE AND DESCRIPTION,,,,,,,,,FALSE
+"=== IDENTIFICAÇÃO ===",SECTION,,,,,,,,,FALSE
+Nome do QA avaliado,TEXT,,,,,,,,,TRUE
+Data da avaliação,DATE,,,,,,,,,TRUE
+Nome do avaliador,TEXT,,,,,,,,,TRUE
+"=== QUESTIONÁRIO TÉCNICO ===
+Pontuação: 0=Não conhece | 1=Conceitual | 2=Aplica em situações simples | 3=Domina",TITLE AND DESCRIPTION,,,,,,,,,FALSE
+[P1] Explique o que é um caso de teste e quais elementos ele deve conter.,LINEAR SCALE,,0,1,2,3,,,,,TRUE
+[P2] Qual a diferença entre severidade e prioridade de um bug?,LINEAR SCALE,,0,1,2,3,,,,,TRUE
+[P3] Descreva o ciclo de vida de um bug desde a descoberta até o fechamento.,LINEAR SCALE,,0,1,2,3,,,,,TRUE
+[P4] O que são testes exploratórios e quando você os utiliza?,LINEAR SCALE,,0,1,2,3,,,,,TRUE
+[P5] Como você valida se uma funcionalidade está funcionando corretamente?,LINEAR SCALE,,0,1,2,3,,,,,TRUE
+[P6] Como você cria uma requisição GET no Postman?,LINEAR SCALE,,0,1,2,3,,,,,TRUE
+[P7] O que são variáveis no Postman e para que servem?,LINEAR SCALE,,0,1,2,3,,,,,TRUE
+[P8] Como você testa se uma API retornou o status code correto?,LINEAR SCALE,,0,1,2,3,,,,,TRUE
+[PM1] Como você cria um workflow onde o resultado de uma requisição é usado na próxima?,LINEAR SCALE,,0,1,2,,,,,,TRUE
+[PM4] Como você gerencia múltiplos ambientes (DEV QA PROD) no Postman?,LINEAR SCALE,,0,1,2,,,,,,TRUE
+[P9] O que é Swagger e para que é usado?,LINEAR SCALE,,0,1,2,3,,,,,TRUE
+[P10] Como você usa o Swagger para criar testes no Postman?,LINEAR SCALE,,0,1,2,3,,,,,TRUE
+[SW1] Como você identifica problemas em uma documentação Swagger?,LINEAR SCALE,,0,1,2,,,,,,TRUE
+[SW2] Explique a diferença entre Swagger UI e Swagger Editor.,LINEAR SCALE,,0,1,2,,,,,,TRUE
+[SW5] Como você gera testes automaticamente a partir de um arquivo Swagger?,LINEAR SCALE,,0,1,2,,,,,,TRUE
+[C1] Qual a diferença entre cy.visit() e cy.request()?,LINEAR SCALE,,0,1,2,,,,,,TRUE
+[C3] Explique o conceito de retry-ability no Cypress.,LINEAR SCALE,,0,1,2,,,,,,TRUE
+[C5] Como você organiza fixtures para diferentes ambientes no Cypress?,LINEAR SCALE,,0,1,2,,,,,,TRUE
+[P11] Como você usa o Jira para reportar um bug?,LINEAR SCALE,,0,1,2,3,,,,,TRUE
+[P12] O que você faz quando encontra um bug durante os testes?,LINEAR SCALE,,0,1,2,3,,,,,TRUE
+"=== CENÁRIOS - Resposta do QA ===",SECTION,,,,,,,,,FALSE
+[C1] Story sem critérios de aceitação claros - Resposta do QA,PARAGRAPH,,,,,,,,,FALSE
+[C1] Observações do avaliador,PARAGRAPH,,,,,,,,,FALSE
+[C2] Bug que dev diz não ser bug - Resposta do QA,PARAGRAPH,,,,,,,,,FALSE
+[C2] Observações do avaliador,PARAGRAPH,,,,,,,,,FALSE
+[C3] Prazo apertado - como prioriza - Resposta do QA,PARAGRAPH,,,,,,,,,FALSE
+[C3] Observações do avaliador,PARAGRAPH,,,,,,,,,FALSE
+"=== PERGUNTAS COMPORTAMENTAIS ===",SECTION,,,,,,,,,FALSE
+[B1] Bug crítico - como comunicou ao dev - Resposta,PARAGRAPH,,,,,,,,,FALSE
+[B1] Observações,PARAGRAPH,,,,,,,,,FALSE
+[B2] Aprendeu algo novo rapidamente - Resposta,PARAGRAPH,,,,,,,,,FALSE
+[B2] Observações,PARAGRAPH,,,,,,,,,FALSE
+[B3] Feedback negativo sobre bug - Resposta,PARAGRAPH,,,,,,,,,FALSE
+[B3] Observações,PARAGRAPH,,,,,,,,,FALSE
+"=== SOFT SKILLS ===
+Escala: 1=Não observado/Baixo | 5=Excelente",TITLE AND DESCRIPTION,,,,,,,,,FALSE
+Comunicação clara (oral e escrita),LINEAR SCALE,,1,2,3,4,5,,,,,TRUE
+Evidências - Comunicação,PARAGRAPH,,,,,,,,,FALSE
+Atenção aos detalhes,LINEAR SCALE,,1,2,3,4,5,,,,,TRUE
+Evidências - Atenção aos detalhes,PARAGRAPH,,,,,,,,,FALSE
+Trabalho em equipe,LINEAR SCALE,,1,2,3,4,5,,,,,TRUE
+Evidências - Trabalho em equipe,PARAGRAPH,,,,,,,,,FALSE
+Pensamento crítico,LINEAR SCALE,,1,2,3,4,5,,,,,TRUE
+Evidências - Pensamento crítico,PARAGRAPH,,,,,,,,,FALSE
+Curiosidade e aprendizado,LINEAR SCALE,,1,2,3,4,5,,,,,TRUE
+Evidências - Curiosidade,PARAGRAPH,,,,,,,,,FALSE
+Empatia (advocacia do usuário),LINEAR SCALE,,1,2,3,4,5,,,,,TRUE
+Evidências - Empatia,PARAGRAPH,,,,,,,,,FALSE
+"=== PDI E INTERPRETAÇÃO ===",SECTION,,,,,,,,,FALSE
+Nível geral do QA,DROPDOWN,,Precisa de treinamento,Adequado para Junior,Pronto para evoluir,,,,,TRUE
+Top 3 prioridades de desenvolvimento (gaps identificados),PARAGRAPH,,,,,,,,,TRUE
+Top 3 pontos fortes,PARAGRAPH,,,,,,,,,TRUE
+Objetivos SMART para o PDI (próximos 3-6 meses),PARAGRAPH,,,,,,,,,TRUE
+Ações específicas (cursos mentoria prática),PARAGRAPH,,,,,,,,,TRUE
+Recursos sugeridos (links cursos documentação),PARAGRAPH,,,,,,,,,FALSE
+Próximos passos imediatos (1-2 ações),TEXT,,,,,,,,,TRUE
+Data da próxima revisão,DATE,,,,,,,,,TRUE
+Observações adicionais,PARAGRAPH,,,,,,,,,FALSE

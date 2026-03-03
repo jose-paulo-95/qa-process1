@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processo de Qualidade QA - Apresentação</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4A90E2 0%, #7B2CBF 100%);
+            color: #1a1a1a;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: rgba(255, 255, 255, 0.4);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #FFD700;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            padding: 60px 80px;
+            background: #FFFFFF;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow-y: auto;
+            animation: slideIn 0.5s ease;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            color: #666;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .slide h1 {
+            font-size: 3.5em;
+            color: #1E40AF;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .slide h2 {
+            font-size: 2.5em;
+            color: #7C3AED;
+            margin-bottom: 25px;
+            border-bottom: 4px solid #4A90E2;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .slide h3 {
+            font-size: 1.8em;
+            color: #1E40AF;
+            margin: 20px 0 15px 0;
+            font-weight: 600;
+        }
+
+        .slide p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .slide ul, .slide ol {
+            font-size: 1.2em;
+            line-height: 2;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .slide li {
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .slide li strong {
+            color: #1E40AF;
+            font-weight: 700;
+        }
+
+        .cover-slide {
+            text-align: center;
+            background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+            color: white !important;
+        }
+
+        .cover-slide h1 {
+            color: #FFFFFF !important;
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+
+        .cover-slide .subtitle {
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            opacity: 1;
+            font-weight: 500;
+            color: #FFFFFF !important;
+        }
+
+        .cover-slide .author {
+            font-size: 1.3em;
+            margin-top: 60px;
+            opacity: 1;
+            font-weight: 500;
+            color: #FFFFFF !important;
+        }
+
+        .cover-slide p {
+            color: #FFFFFF !important;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: #F0F4FF;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 6px solid #1E40AF;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.2);
+            border: 2px solid #E0E7FF;
+        }
+
+        .card h3 {
+            color: #1E40AF;
+            margin-top: 0;
+            font-weight: 700;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+            color: white !important;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+            border: 3px solid #FFD700;
+        }
+
+        .highlight-box h3 {
+            color: #FFFFFF !important;
+            margin-top: 0;
+            font-weight: 700;
+        }
+
+        .highlight-box p {
+            color: #FFFFFF !important;
+        }
+
+        .highlight-box ul, .highlight-box ol {
+            color: #FFFFFF !important;
+        }
+
+        .highlight-box li {
+            color: #FFFFFF !important;
+        }
+
+        .highlight-box strong {
+            color: #FFFFFF !important;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: #F0F4FF;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 5px solid #1E40AF;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+            border: 2px solid #E0E7FF;
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #1E40AF;
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .metric-label {
+            font-size: 1.1em;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .kanban-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #F0F4FF;
+            border-radius: 10px;
+            border: 3px solid #1E40AF;
+        }
+
+        .kanban-column {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            margin: 0 5px;
+            border: 3px solid #1E40AF;
+            box-shadow: 0 3px 10px rgba(30, 64, 175, 0.3);
+        }
+
+        .kanban-column h4 {
+            color: #1E40AF;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .arrow {
+            font-size: 2.5em;
+            color: #1E40AF;
+            margin: 0 10px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .timeline {
+            margin: 30px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 25px;
+            align-items: start;
+        }
+
+        .timeline-marker {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white !important;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4);
+            border: 3px solid #FFD700;
+            font-size: 1.2em;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-content h4 {
+            color: #1E40AF;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+
+        table th {
+            background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+            color: white !important;
+            padding: 15px;
+            text-align: left;
+            font-weight: 700;
+            border: 2px solid #FFD700;
+        }
+
+        table td {
+            padding: 12px 15px;
+            border-bottom: 2px solid #E0E7FF;
+            font-weight: 500;
+        }
+
+        table tr:hover {
+            background: #F0F4FF;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+            color: white;
+            border: 3px solid #FFD700;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.5);
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(135deg, #7C3AED 0%, #1E40AF 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.7);
+            border-color: #FFD700;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: #9CA3AF;
+        }
+
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+            color: white !important;
+            border: 3px solid #FFD700;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.5);
+            z-index: 100;
+        }
+
+        .home-btn:hover {
+            background: linear-gradient(135deg, #7C3AED 0%, #1E40AF 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.7);
+            border-color: #FFD700;
+        }
+
+        .keyboard-hint {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            font-weight: 600;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.5);
+            border: 2px solid #FFD700;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 30px;
+            }
+
+            .slide h1 {
+                font-size: 2em;
+            }
+
+            .slide h2 {
+                font-size: 1.8em;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .kanban-flow {
+                flex-direction: column;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progress"></div>
+    </div>
+
+    <div class="presentation-container">
+        <!-- Slide 1: Capa -->
+        <div class="slide active cover-slide">
+            <h1>Processo de Qualidade QA</h1>
+            <p class="subtitle">Estruturação Completa do Processo de Testes</p>
+            <p style="margin-top: 40px; font-size: 1.2em; opacity: 1; font-weight: 500;">2026</p>
+            <div class="slide-number">1 / 39</div>
+        </div>
+
+        <!-- Slide 2: Apresentação -->
+        <div class="slide">
+            <h2>Apresentação</h2>
+            <div style="margin-top: 30px;">
+                <p><strong>Objetivo desta apresentação:</strong></p>
+                <ul>
+                    <li>Apresentar processo completo de qualidade estruturado</li>
+                    <li>Demonstrar metodologia de trabalho (Kanban)</li>
+                    <li>Mostrar templates, métricas e ferramentas</li>
+                    <li>Apresentar plano de implementação</li>
+                    <li>Discutir ROI e benefícios esperados</li>
+                </ul>
+            </div>
+            <div class="slide-number">2 / 39</div>
+        </div>
+
+        <!-- Slide 3: Contexto -->
+        <div class="slide">
+            <h2>Contexto e Necessidade</h2>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="card">
+                    <h3>Situação Atual</h3>
+                    <ul>
+                        <li>Processo de qualidade não estruturado</li>
+                        <li>Falta de padronização</li>
+                        <li>Métricas não definidas</li>
+                        <li>Integração limitada com ferramentas</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Necessidade</h3>
+                    <ul>
+                        <li>Processo claro e documentado</li>
+                        <li>Templates padronizados</li>
+                        <li>Métricas para medir qualidade</li>
+                        <li>Integração com Jira e BrowserStack</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-number">3 / 39</div>
+        </div>
+
+        <!-- Slide 4: Visão Geral do Processo -->
+        <div class="slide">
+            <h2>Visão Geral do Processo</h2>
+            <div style="margin-top: 30px;">
+                <h3>Estrutura Completa Criada:</h3>
+                <div class="two-column">
+                    <div>
+                        <ul>
+                            <li><strong>Processo de Qualidade</strong><br>Documento principal com ciclo de vida</li>
+                            <li><strong>Metodologia Kanban</strong><br>Fluxo de trabalho ágil</li>
+                            <li><strong>Templates</strong><br>Bugs, Test Plans, Test Cases</li>
+                            <li><strong>Métricas e KPIs</strong><br>Dashboard e coleta</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li><strong>Integração Jira</strong><br>Workflows e campos customizados</li>
+                            <li><strong>BrowserStack</strong><br>Link com casos de teste</li>
+                            <li><strong>Progressão de Carreira</strong><br>Guia para QAs</li>
+                            <li><strong>Checklists</strong><br>Smoke, Regressão, Release</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">4 / 39</div>
+        </div>
+
+        <!-- Slide 5: Por que Kanban -->
+        <div class="slide">
+            <h2>Metodologia: Por que Kanban?</h2>
+            <div style="margin-top: 20px; margin-bottom: 20px; padding: 20px; background: #E0E7FF; border-radius: 10px; border-left: 6px solid #1E40AF;">
+                <p style="font-size: 1.1em; line-height: 1.6; color: #1a1a1a; margin: 0;">
+                    <strong>Kanban</strong> é uma metodologia ágil de gestão de trabalho que visualiza o fluxo de tarefas em um quadro, permitindo entrega contínua e melhoria constante através de limites de trabalho em progresso (WIP) e métricas de fluxo.
+                </p>
+            </div>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="card">
+                    <h3>Vantagens</h3>
+                    <ul>
+                        <li>Flexibilidade para demandas variáveis</li>
+                        <li>Foco em fluxo contínuo</li>
+                        <li>Menos cerimônias, mais execução</li>
+                        <li>Melhor para entrega contínua</li>
+                        <li>Visualização clara do trabalho</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Benefícios para QA</h3>
+                    <ul>
+                        <li>QA pega trabalho assim que está pronto</li>
+                        <li>Testes acontecem continuamente</li>
+                        <li>Fácil ver o que aguarda teste</li>
+                        <li>WIP limits evitam sobrecarga</li>
+                        <li>Métricas claras (lead time, cycle time)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Princípios do Kanban</h3>
+                <p style="color: white !important;">1. Visualizar o trabalho | 2. Limitar WIP | 3. Gerenciar fluxo | 4. Políticas explícitas | 5. Melhorar colaborativamente</p>
+            </div>
+            <div class="slide-number">5 / 39</div>
+        </div>
+
+        <!-- Slide 6: Quadro Kanban -->
+        <div class="slide">
+            <h2>Quadro Kanban</h2>
+            <div style="margin-top: 40px;">
+                <div class="kanban-flow">
+                    <div class="kanban-column">
+                        <h4>Backlog</h4>
+                        <p>Stories priorizadas</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="kanban-column">
+                        <h4>To Do</h4>
+                        <p>Prontas para trabalhar</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="kanban-column">
+                        <h4>In Development</h4>
+                        <p>WIP: 3-5</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="kanban-column" style="border-color: #10B981; background: #D1FAE5;">
+                        <h4 style="color: #047857;">Ready for Testing</h4>
+                        <p style="color: #047857; font-weight: 600;">WIP: 2-3</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="kanban-column" style="border-color: #10B981; background: #D1FAE5;">
+                        <h4 style="color: #047857;">In Testing</h4>
+                        <p style="color: #047857; font-weight: 600;">WIP: 2-3</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="kanban-column" style="border-color: #FFD700; background: #FEF3C7;">
+                        <h4 style="color: #92400E;">Ready for STG</h4>
+                        <p style="color: #92400E; font-weight: 600;">Pronta para staging</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="kanban-column" style="border-color: #7C3AED; background: #EDE9FE;">
+                        <h4 style="color: #5B21B6;">PO Validation</h4>
+                        <p style="color: #5B21B6; font-weight: 600;">Validação pelo PO</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="kanban-column" style="border-color: #10B981; background: #D1FAE5;">
+                        <h4 style="color: #047857;">Done</h4>
+                        <p style="color: #047857; font-weight: 600;">Aprovada e em produção</p>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">WIP Limits (Work In Progress)</h3>
+                <p style="color: white !important;">Limites definidos para evitar sobrecarga e focar em conclusão. Ajustados baseados em dados e capacidade da equipe.</p>
+            </div>
+            <div class="slide-number">6 / 39</div>
+        </div>
+
+        <!-- Slide 7: Fluxo Completo do Processo -->
+        <div class="slide">
+            <h2>Fluxo Completo do Processo</h2>
+            <div style="margin-top: 30px; font-size: 0.95em;">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <p><strong>Product Owner cria Story/Epic</strong></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <p><strong>Desenvolvedor pega a story</strong> (To Do → In Progress)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">3</div>
+                        <div class="timeline-content">
+                            <p><strong>Desenvolvedor implementa</strong> e faz deploy em DEV</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">4</div>
+                        <div class="timeline-content">
+                            <p><strong>Story movida para "Ready for Testing"</strong></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">5</div>
+                        <div class="timeline-content">
+                            <p><strong>QA analisa requisitos</strong> e cria Test Plan</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">6</div>
+                        <div class="timeline-content">
+                            <p><strong>QA executa testes</strong> (In Testing)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">7</div>
+                        <div class="timeline-content">
+                            <p><strong>Bugs encontrados</strong> são reportados</p>
+                            <p style="font-size: 0.85em; color: #666; font-style: italic; margin-top: 5px;">*Pode ser pulado se não houver bugs encontrados</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">8</div>
+                        <div class="timeline-content">
+                            <p><strong>Desenvolvedor corrige bugs</strong></p>
+                            <p style="font-size: 0.85em; color: #666; font-style: italic; margin-top: 5px;">*Pode ser pulado se não houver bugs encontrados</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">9</div>
+                        <div class="timeline-content">
+                            <p><strong>QA retesta bugs corrigidos</strong></p>
+                            <p style="font-size: 0.85em; color: #666; font-style: italic; margin-top: 5px;">*Pode ser pulado se não houver bugs encontrados</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">10</div>
+                        <div class="timeline-content">
+                            <p><strong>Movida para Ready por STG</strong></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">11</div>
+                        <div class="timeline-content">
+                            <p><strong>Deploy em Staging</strong></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">12</div>
+                        <div class="timeline-content">
+                            <p><strong>Testes realizados pelo PO</strong></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">13</div>
+                        <div class="timeline-content">
+                            <p><strong>Aprovação final → Deploy em Produção</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">7 / 39</div>
+        </div>
+
+        <!-- Slide 8: Cerimônias Kanban -->
+        <div class="slide">
+            <h2>Cerimônias Kanban</h2>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="card">
+                    <h3>Daily Standup</h3>
+                    <p><strong>Frequência:</strong> Diária (15 min)</p>
+                    <p><strong>Foco:</strong> O que está bloqueado no fluxo?</p>
+                    <p>QA reporta: stories em teste, bugs encontrados, bloqueios</p>
+                </div>
+                <div class="card">
+                    <h3>Planning</h3>
+                    <p><strong>Frequência:</strong> Quinzenal</p>
+                    <p><strong>Foco:</strong> Priorizar backlog e To-do</p>
+                    <p>PO prioriza itens do backlog para To-do e/ou reprioriza itens já em To-do. Equipe revisa e estima.</p>
+                </div>
+            </div>
+            <div class="slide-number">8 / 39</div>
+        </div>
+
+        <!-- Slide 9: Contexto - Definições de Pronto -->
+        <div class="slide">
+            <h2>Definições de Pronto: DoR e DoD</h2>
+            <div style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, #E0E7FF 0%, #F3E8FF 100%); border-radius: 10px; border-left: 6px solid #1E40AF;">
+                <p style="font-size: 1.15em; line-height: 1.7; color: #1a1a1a; margin: 0; text-align: center;">
+                    Definido o modelo de processo que iremos adotar, agora precisamos estabelecer <strong>critérios claros</strong> para determinar quando uma demanda está <strong>pronta para início</strong> e quando ela está <strong>pronta para entrega</strong>.
+                </p>
+            </div>
+            <div style="margin-top: 30px;">
+                <div class="two-column">
+                    <div class="card">
+                        <h3>Por que são importantes?</h3>
+                        <p>As definições de pronto garantem clareza e qualidade em cada etapa do processo, evitando retrabalho e bloqueios.</p>
+                    </div>
+                    <div class="card">
+                        <h3>DoR vs DoD</h3>
+                        <p><strong>DoR</strong> define quando uma story está pronta para ser trabalhada.<br>
+                        <strong>DoD</strong> define quando uma story está pronta para ser entregue.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Benefícios</h3>
+                <p style="color: white !important;">✓ Reduz bloqueios durante desenvolvimento | ✓ Garante qualidade antes da entrega | ✓ Melhora comunicação entre equipes | ✓ Acelera o fluxo de trabalho</p>
+            </div>
+            <div class="slide-number">9 / 39</div>
+        </div>
+
+        <!-- Slide 10: Definition of Ready (DoR) -->
+        <div class="slide">
+            <h2>Definition of Ready (DoR)</h2>
+            <div style="margin-top: 30px;">
+                <p>Uma story está <strong>PRONTA PARA SER TRABALHADA</strong> quando:</p>
+                <div class="two-column" style="margin-top: 20px;">
+                    <ul>
+                        <li>✓ Requisitos claros e documentados</li>
+                        <li>✓ Critérios de aceite definidos</li>
+                        <li>✓ Story estimada pela equipe</li>
+                        <li>✓ Dependências identificadas e resolvidas</li>
+                        <li>✓ Design/UX aprovado (quando aplicável)</li>
+                    </ul>
+                    <ul>
+                        <li>✓ Ambiente de desenvolvimento disponível</li>
+                        <li>✓ Acesso necessário concedido</li>
+                        <li>✓ Dados de teste definidos</li>
+                        <li>✓ Priorizada pelo Product Owner</li>
+                        <li>✓ Aprovada para entrar no fluxo</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Objetivo do DoR</h3>
+                <p style="color: white !important;">Garantir que stories no backlog estão completas e prontas para desenvolvimento, evitando bloqueios e retrabalho durante a implementação.</p>
+            </div>
+            <div class="slide-number">10 / 39</div>
+        </div>
+
+        <!-- Slide 11: Definição de Pronto (DoD) -->
+        <div class="slide">
+            <h2>Definição de Pronto (DoD)</h2>
+            <div style="margin-top: 30px;">
+                <p>Uma feature/story é considerada <strong>PRONTA</strong> quando:</p>
+                <div class="two-column" style="margin-top: 20px;">
+                    <ul>
+                        <li>✓ Código desenvolvido e revisado</li>
+                        <li>✓ Testes unitários criados e passando</li>
+                        <li>✓ Testes funcionais executados</li>
+                        <li>✓ Testes de regressão executados</li>
+                        <li>✓ Bugs críticos e altos resolvidos</li>
+                    </ul>
+                    <ul>
+                        <li>✓ Documentação atualizada</li>
+                        <li>✓ Deploy em ambiente de QA/Staging</li>
+                        <li>✓ Aprovado pelo QA</li>
+                        <li>✓ Aprovado pelo Product Owner</li>
+                        <li>✓ Pendências técnicas resolvidas</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Definição de Pronto para Teste</h3>
+                <p style="color: white !important;">Story pronta para QA quando: código desenvolvido, deploy em teste, ambiente disponível, dados preparados</p>
+            </div>
+            <div class="slide-number">11 / 39</div>
+        </div>
+
+        <!-- Slide 12: Contexto - Processo de QA -->
+        <div class="slide">
+            <h2>Processo de QA: Garantia de Qualidade</h2>
+            <div style="margin-top: 40px;">
+                <div class="two-column">
+                    <div class="card">
+                        <h3>O que é o Processo de QA?</h3>
+                        <p>Conjunto estruturado de atividades que garantem a qualidade do software através de planejamento, execução e análise de testes.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Por que é essencial?</h3>
+                        <p>Identifica defeitos antes da produção, valida requisitos, garante experiência do usuário e reduz custos de correção.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Componentes do Processo</h3>
+                <p style="color: white !important;">✓ Ciclo de vida estruturado | ✓ Diferentes tipos de teste | ✓ Templates padronizados | ✓ Métricas e acompanhamento</p>
+            </div>
+            <div class="slide-number">12 / 39</div>
+        </div>
+
+        <!-- Slide 13: Ciclo de Vida do Teste -->
+        <div class="slide">
+            <h2>Ciclo de Vida do Teste</h2>
+            <div class="timeline" style="margin-top: 40px;">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h4>Planejamento</h4>
+                        <p>Análise de requisitos, estratégia de teste, estimativa, alocação de recursos</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h4>Análise</h4>
+                        <p>Identificação de casos de teste, análise de riscos, dados de teste</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h4>Design</h4>
+                        <p>Criação de casos detalhados, preparação de ambiente, configuração</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h4>Execução</h4>
+                        <p>Execução de testes, reporte de bugs, reteste</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <h4>Relatório</h4>
+                        <p>Compilação de resultados, análise de métricas, recomendações</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker">6</div>
+                    <div class="timeline-content">
+                        <h4>Fechamento</h4>
+                        <p>Arquivamento, lições aprendidas, atualização de documentação</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">13 / 39</div>
+        </div>
+
+        <!-- Slide 14: Tipos de Teste -->
+        <div class="slide">
+            <h2>Tipos de Teste Implementados</h2>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="card">
+                    <h3>Funcional</h3>
+                    <p>Validação de funcionalidades contra requisitos</p>
+                </div>
+                <div class="card">
+                    <h3>Regressão</h3>
+                    <p>Garantir que mudanças não quebraram funcionalidades</p>
+                </div>
+                <div class="card">
+                    <h3>Integração</h3>
+                    <p>Validação de integração entre componentes/sistemas</p>
+                </div>
+                <div class="card">
+                    <h3>Usabilidade</h3>
+                    <p>Validação de experiência do usuário</p>
+                </div>
+                <div class="card">
+                    <h3>Automação com Cypress</h3>
+                    <p>Testes automatizados de interface e regressão</p>
+                </div>
+            </div>
+            <div class="slide-number">14 / 39</div>
+        </div>
+
+        <!-- Slide 15: Templates Criados -->
+        <div class="slide">
+            <h2>Templates e Padronização</h2>
+            <div style="margin-top: 30px;">
+                <h3>Templates Desenvolvidos:</h3>
+                <div class="two-column">
+                    <div class="card">
+                        <h3>Bug Report Template</h3>
+                        <ul>
+                            <li>Informações do ambiente</li>
+                            <li>Passos para reproduzir (step-by-step)</li>
+                            <li>Resultado esperado vs. atual</li>
+                            <li>Evidências (screenshots, logs)</li>
+                            <li>Severidade e prioridade</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Test Plan Template</h3>
+                        <ul>
+                            <li>Escopo e objetivos</li>
+                            <li>Estratégia de teste</li>
+                            <li>Recursos e cronograma</li>
+                            <li>Riscos e mitigações</li>
+                            <li>Matriz de rastreabilidade</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Test Case Template</h3>
+                        <ul>
+                            <li>Pré-condições</li>
+                            <li>Passos detalhados (numerados)</li>
+                            <li>Dados de teste</li>
+                            <li>Resultado esperado</li>
+                            <li>Pós-condições</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Checklist Template</h3>
+                        <ul>
+                            <li>Smoke tests</li>
+                            <li>Testes de regressão</li>
+                            <li>Testes de release</li>
+                            <li>Testes de integração</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">15 / 39</div>
+        </div>
+
+        <!-- Slide 16: Benefícios da Padronização -->
+        <div class="slide">
+            <h2>Benefícios da Padronização</h2>
+            <div class="metric-grid" style="margin-top: 30px;">
+                <div class="metric-card">
+                    <div class="metric-label">Consistência nos reports</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Report de bugs claro e padronizado</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Clareza na comunicação</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Tempo de onboarding reduzido</div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Impacto</h3>
+                <p style="color: white !important;">✓ Bugs reportados de forma clara e completa<br>
+                ✓ Testes planejados de forma estruturada<br>
+                ✓ Onboarding de novos QAs mais rápido<br>
+                ✓ Melhor comunicação com desenvolvedores</p>
+            </div>
+            <div class="slide-number">13 / 39</div>
+        </div>
+
+        <!-- Slide 17: Métricas Principais -->
+        <div class="slide">
+            <h2>Métricas e KPIs Principais</h2>
+            <div style="margin-top: 30px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Métrica</th>
+                            <th>Fórmula</th>
+                            <th>Meta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Taxa de Defeitos</strong></td>
+                            <td>Bugs / Testes × 100</td>
+                            <td>&lt; 5%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Taxa de Escape</strong></td>
+                            <td>Bugs em Prod / Total × 100</td>
+                            <td>&lt; 5%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cobertura de Testes</strong></td>
+                            <td>Requisitos com Testes / Total × 100</td>
+                            <td>&gt; 80%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>MTTR</strong><br><span style="font-size: 0.8em; color: #666;">(Mean Time To Repair)</span></td>
+                            <td>Tempo médio de resolução</td>
+                            <td>P1: &lt; 4h | P2: &lt; 1d</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Taxa de Pass/Fail</strong></td>
+                            <td>Testes Pass / Total × 100</td>
+                            <td>&gt; 85%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="slide-number">14 / 39</div>
+        </div>
+
+        <!-- Slide 18: Métricas Kanban -->
+        <div class="slide">
+            <h2>Métricas do Kanban</h2>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="card">
+                    <h3>Lead Time</h3>
+                    <p>Tempo do backlog até Done</p>
+                    <div class="metric-value" style="font-size: 2em; margin: 15px 0;">7-14 dias</div>
+                    <p><strong>Meta:</strong> Reduzir continuamente</p>
+                </div>
+                <div class="card">
+                    <h3>Cycle Time</h3>
+                    <p>Tempo de In Development até Done</p>
+                    <div class="metric-value" style="font-size: 2em; margin: 15px 0;">3-7 dias</div>
+                    <p><strong>Meta:</strong> Otimizar fluxo</p>
+                </div>
+                <div class="card">
+                    <h3>Throughput</h3>
+                    <p>Stories entregues por semana</p>
+                    <div class="metric-value" style="font-size: 2em; margin: 15px 0;">5-10</div>
+                    <p><strong>Meta:</strong> Aumentar ou manter</p>
+                </div>
+                <div class="card">
+                    <h3>Taxa de Bloqueios</h3>
+                    <p>% de stories bloqueadas</p>
+                    <div class="metric-value" style="font-size: 2em; margin: 15px 0;">&lt; 10%</div>
+                    <p><strong>Meta:</strong> Minimizar</p>
+                </div>
+            </div>
+            <div class="slide-number">18 / 39</div>
+        </div>
+
+        <!-- Slide 20: Dashboard de Métricas -->
+        <div class="slide">
+            <h2>Dashboard de Métricas</h2>
+            <div style="margin-top: 30px;">
+                <h3>Visualizações Implementadas:</h3>
+                <div class="two-column">
+                    <ul>
+                        <li>Cards de métricas principais</li>
+                        <li>Gráfico de bugs por severidade</li>
+                        <li>Taxa de pass/fail</li>
+                        <li>Tendência de bugs ao longo do tempo</li>
+                        <li>Taxa de escape por mês</li>
+                    </ul>
+                    <ul>
+                        <li>Tempo médio de resolução (MTTR - Mean Time To Repair)</li>
+                        <li>Cobertura de testes</li>
+                        <li>Bugs por módulo</li>
+                        <li>Bugs críticos abertos</li>
+                        <li>Velocity vs. Bugs</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Ferramentas</h3>
+                <p style="color: white !important;">✓ Jira (dashboards nativos) | ✓ Queries JQL | ✓ Scripts de automação (Python/PowerShell) | ✓ Relatórios automatizados</p>
+            </div>
+            <div class="slide-number">16 / 39</div>
+        </div>
+
+        <!-- Slide 21: Integração Jira -->
+        <div class="slide">
+            <h2>Integração com Jira</h2>
+            <div style="margin-top: 30px;">
+                <h3>Configurações Implementadas:</h3>
+                <div class="two-column">
+                    <div class="card">
+                        <h3>Tipos de Issue</h3>
+                        <ul>
+                            <li>Story/Feature</li>
+                            <li>Bug</li>
+                            <li>Test Case</li>
+                            <li>Test Execution</li>
+                            <li>Test Plan</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Workflows</h3>
+                        <ul>
+                            <li>Bugs: Novo → Resolvido → Retestado → Fechado</li>
+                            <li>Stories: To Do → In Development → Ready for Testing → In Testing → Done</li>
+                            <li>Test Cases: Novo → Aprovado → Em Uso</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Campos Customizados</h3>
+                        <ul>
+                            <li>Severidade</li>
+                            <li>Ambiente</li>
+                            <li>Tipo de Teste</li>
+                            <li>BrowserStack URL/ID</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Dashboards</h3>
+                        <ul>
+                            <li>Dashboard de QA</li>
+                            <li>Dashboard de Release</li>
+                            <li>Dashboard Executivo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">17 / 39</div>
+        </div>
+
+        <!-- Slide 22: BrowserStack Integration -->
+        <div class="slide">
+            <h2>Integração BrowserStack Test Management</h2>
+            <div style="margin-top: 30px;">
+                <div class="highlight-box">
+                    <h3 style="color: white !important;">Por que BrowserStack?</h3>
+                    <p style="color: white !important;">✓ Redução de custos (armazenamento incluído no plano)<br>
+                    ✓ Execução integrada de testes<br>
+                    ✓ Rastreabilidade completa com Jira</p>
+                </div>
+                <div class="two-column" style="margin-top: 30px;">
+                    <div class="card">
+                        <h3>Configuração</h3>
+                        <ul>
+                            <li>Campo "BrowserStack Test Case URL"</li>
+                            <li>Campo "BrowserStack Test Case ID"</li>
+                            <li>Link direto entre Jira e BrowserStack</li>
+                            <li>Rastreabilidade bidirecional</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Workflow</h3>
+                        <ol>
+                            <li>Criar Test Case no Jira</li>
+                            <li>Criar caso no BrowserStack</li>
+                            <li>Fazer link via URL/ID</li>
+                            <li>Manter sincronizado</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">18 / 39</div>
+        </div>
+
+        <!-- Slide 23: Progressão de Carreira -->
+        <div class="slide">
+            <h2>Progressão de Carreira para QA</h2>
+            <div style="margin-top: 30px;">
+                <div class="two-column">
+                    <div class="card">
+                        <h3>QA Junior</h3>
+                        <p><strong>0-2 anos</strong></p>
+                        <ul>
+                            <li>Fundamentos de QA</li>
+                            <li>Testes manuais</li>
+                            <li>Ferramentas básicas</li>
+                            <li>Postman básico</li>
+                            <li>Cypress básico</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>QA Pleno</h3>
+                        <p><strong>2-5 anos</strong></p>
+                        <ul>
+                            <li>Automação intermediária</li>
+                            <li>Planejamento de testes</li>
+                            <li>Postman avançado</li>
+                            <li>Cypress intermediário</li>
+                            <li>Mentoria de juniores</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>QA Sênior</h3>
+                        <p><strong>5+ anos</strong></p>
+                        <ul>
+                            <li>Liderança técnica</li>
+                            <li>Arquitetura de automação</li>
+                            <li>Estratégia de qualidade</li>
+                            <li>Mentoria avançada</li>
+                            <li>Definição de processos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Recursos Criados</h3>
+                <p style="color: white !important;">✓ Matriz de competências por nível | ✓ Questionário de avaliação | ✓ Roadmap de aprendizado | ✓ Programa de mentoria</p>
+            </div>
+            <div class="slide-number">19 / 39</div>
+        </div>
+
+        <!-- Slide 24: Matriz de Competências -->
+        <div class="slide">
+            <h2>Matriz de Competências</h2>
+            <div style="margin-top: 30px;">
+                <p>Matriz completa criada com competências técnicas por nível, incluindo:</p>
+                <div class="two-column">
+                    <ul>
+                        <li>Fundamentos de QA</li>
+                        <li>Testes Manuais</li>
+                        <li>Automação (Cypress)</li>
+                        <li>Testes de API (Postman)</li>
+                        <li>Swagger</li>
+                    </ul>
+                    <ul>
+                        <li>Ferramentas (Jira, Git, SQL)</li>
+                        <li>Liderança e Processo</li>
+                        <li>Métricas e KPIs</li>
+                        <li>Comunicação técnica</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-number">20 / 39</div>
+        </div>
+
+        <!-- Slide 25: Fase 1 Implementação -->
+        <div class="slide">
+            <h2>Plano de Implementação - Fase 1</h2>
+            <div style="margin-top: 30px;">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <h4>Preparação (Semana 1-2)</h4>
+                            <ul>
+                                <li>Configurar quadro Kanban no Jira</li>
+                                <li>Definir colunas do fluxo</li>
+                                <li>Estabelecer WIP limits iniciais</li>
+                                <li>Configurar workflows</li>
+                                <li>Treinar equipe nos princípios do Kanban</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Entregáveis</h3>
+                <p style="color: white !important;">✓ Quadro Kanban configurado | ✓ Workflows funcionando | ✓ Equipe treinada | ✓ Processos documentados</p>
+            </div>
+            <div class="slide-number">21 / 39</div>
+        </div>
+
+        <!-- Slide 26: Fase 2 Implementação -->
+        <div class="slide">
+            <h2>Plano de Implementação - Fase 2</h2>
+            <div style="margin-top: 30px;">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <h4>Piloto (Semana 3-4)</h4>
+                            <ul>
+                                <li>Começar a usar o quadro Kanban</li>
+                                <li>Coletar métricas iniciais</li>
+                                <li>Ajustar WIP limits conforme necessário</li>
+                                <li>Realizar primeira retrospectiva</li>
+                                <li>Coletar feedback da equipe</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Métricas Iniciais</h3>
+                <p style="color: white !important;">Lead time, cycle time, throughput, taxa de bloqueios - baseline para comparação futura</p>
+            </div>
+            <div class="slide-number">22 / 39</div>
+        </div>
+
+        <!-- Slide 27: Fase 3 Implementação -->
+        <div class="slide">
+            <h2>Plano de Implementação - Fase 3</h2>
+            <div style="margin-top: 30px;">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">3</div>
+                        <div class="timeline-content">
+                            <h4>Ajustes (Semana 5-8)</h4>
+                            <ul>
+                                <li>Refinar processos baseado em aprendizado</li>
+                                <li>Ajustar WIP limits baseado em dados</li>
+                                <li>Otimizar fluxo (remover gargalos)</li>
+                                <li>Estabelecer ritmo de planning</li>
+                                <li>Melhorar comunicação</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Foco</h3>
+                <p style="color: white !important;">Otimização contínua baseada em dados reais. Ajustes incrementais para melhorar eficiência.</p>
+            </div>
+            <div class="slide-number">23 / 39</div>
+        </div>
+
+        <!-- Slide 28: Fase 4 Implementação -->
+        <div class="slide">
+            <h2>Plano de Implementação - Fase 4</h2>
+            <div style="margin-top: 30px;">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">4</div>
+                        <div class="timeline-content">
+                            <h4>Maturidade (Semana 9+)</h4>
+                            <ul>
+                                <li>Processo estabilizado</li>
+                                <li>Métricas sendo coletadas regularmente</li>
+                                <li>Melhoria contínua ativa</li>
+                                <li>WIP limits otimizados</li>
+                                <li>Fluxo eficiente e previsível</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Resultado Esperado</h3>
+                <p style="color: white !important;">Processo maduro, equipe autônoma, métricas consistentes, melhoria contínua estabelecida</p>
+            </div>
+            <div class="slide-number">24 / 39</div>
+        </div>
+
+        <!-- Slide 29: Recursos Necessários -->
+        <div class="slide">
+            <h2>Recursos Necessários</h2>
+            <div style="margin-top: 30px;">
+                <div class="two-column">
+                    <div class="card">
+                        <h3>Ferramentas</h3>
+                        <ul>
+                            <li>Jira (já possui)</li>
+                            <li>BrowserStack (já possui)</li>
+                            <li>Postman (já possui)</li>
+                            <li>Cypress (open source)</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Pessoas</h3>
+                        <ul>
+                            <li>QA Lead (1 pessoa)</li>
+                            <li>QAs (equipe atual)</li>
+                            <li>Desenvolvedores (colaboração)</li>
+                            <li>Product Owner (colaboração)</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Tempo</h3>
+                        <ul>
+                            <li>Configuração: 1-2 semanas</li>
+                            <li>Treinamento: 1 semana</li>
+                            <li>Piloto: 2 semanas</li>
+                            <li>Ajustes: 4 semanas</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Investimento</h3>
+                        <ul>
+                            <li>Ferramentas: R$ 0 (já possui)</li>
+                            <li>Treinamento: Tempo da equipe</li>
+                            <li>Configuração: Tempo do QA Lead</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">25 / 39</div>
+        </div>
+
+        <!-- Slide 30: Riscos e Mitigações -->
+        <div class="slide">
+            <h2>Riscos e Mitigações</h2>
+            <div style="margin-top: 30px;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Risco</th>
+                            <th>Probabilidade</th>
+                            <th>Impacto</th>
+                            <th>Mitigação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Resistência à mudança</td>
+                            <td>Média</td>
+                            <td>Alto</td>
+                            <td>Comunicação clara, treinamento, envolvimento da equipe</td>
+                        </tr>
+                        <tr>
+                            <td>Curva de aprendizado</td>
+                            <td>Alta</td>
+                            <td>Médio</td>
+                            <td>Treinamento adequado, documentação completa, suporte contínuo</td>
+                        </tr>
+                        <tr>
+                            <td>Configuração complexa</td>
+                            <td>Baixa</td>
+                            <td>Médio</td>
+                            <td>Documentação detalhada, implementação gradual, suporte técnico</td>
+                        </tr>
+                        <tr>
+                            <td>Falta de adesão</td>
+                            <td>Média</td>
+                            <td>Alto</td>
+                            <td>Liderança comprometida, métricas de acompanhamento, feedback contínuo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="slide-number">26 / 39</div>
+        </div>
+
+        <!-- Slide 31: Benefícios Esperados -->
+        <div class="slide">
+            <h2>Benefícios Esperados</h2>
+            <div class="metric-grid" style="margin-top: 50px;">
+                <div class="metric-card">
+                    <div class="metric-value">✓</div>
+                    <div class="metric-label">Redução de bugs em produção</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">✓</div>
+                    <div class="metric-label">Rastreabilidade completa</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">✓</div>
+                    <div class="metric-label">Previsibilidade de Demandas</div>
+                </div>
+            </div>
+            <div class="slide-number">28 / 39</div>
+        </div>
+
+        <!-- Slide 32: ROI Quantitativo -->
+        <div class="slide">
+            <h2>ROI - Benefícios Quantitativos</h2>
+            <div style="margin-top: 30px;">
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Bugs em produção</div>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Redução de custos de correção</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Tempo de release</div>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Entregas mais rápidas</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Eficiência da equipe</div>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Mais trabalho com mesma equipe</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Tempo de onboarding</div>
+                        <p style="margin-top: 10px; font-size: 0.9em;">Novos QAs produtivos mais rápido</p>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Economia Estimada</h3>
+                <p style="color: white !important;">Redução em bugs em produção = menos horas de correção = economia significativa em custos de desenvolvimento e suporte</p>
+            </div>
+            <div class="slide-number">27 / 39</div>
+        </div>
+
+        <!-- Slide 33: ROI Qualitativo -->
+        <div class="slide">
+            <h2>ROI - Benefícios Qualitativos</h2>
+            <div style="margin-top: 30px;">
+                <div class="two-column">
+                    <div class="card">
+                        <h3>Para a Empresa</h3>
+                        <ul>
+                            <li>Melhor qualidade de produto</li>
+                            <li>Maior confiança dos clientes</li>
+                            <li>Processo escalável</li>
+                            <li>Redução de riscos</li>
+                            <li>Melhor previsibilidade</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Para a Equipe</h3>
+                        <ul>
+                            <li>Processo claro e definido</li>
+                            <li>Melhor comunicação</li>
+                            <li>Desenvolvimento de carreira</li>
+                            <li>Menos retrabalho</li>
+                            <li>Maior satisfação</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Para o Cliente</h3>
+                        <ul>
+                            <li>Produtos mais confiáveis</li>
+                            <li>Menos bugs em produção</li>
+                            <li>Releases mais frequentes</li>
+                            <li>Melhor experiência</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Para o Negócio</h3>
+                        <ul>
+                            <li>Competitividade</li>
+                            <li>Redução de custos</li>
+                            <li>Time-to-market melhor</li>
+                            <li>ROI positivo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">28 / 39</div>
+        </div>
+
+        <!-- Slide 34: Cronograma -->
+        <div class="slide">
+            <h2>Cronograma de Implementação</h2>
+            <div style="margin-top: 40px;">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">W1-2</div>
+                        <div class="timeline-content">
+                            <h4>Preparação</h4>
+                            <p>Configuração Jira, Kanban, workflows, treinamento</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">W3-4</div>
+                        <div class="timeline-content">
+                            <h4>Piloto</h4>
+                            <p>Início do uso, coleta de métricas, primeira retro</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">W5-8</div>
+                        <div class="timeline-content">
+                            <h4>Ajustes</h4>
+                            <p>Refinamento, otimização, estabelecimento de ritmo</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">W9+</div>
+                        <div class="timeline-content">
+                            <h4>Maturidade</h4>
+                            <p>Processo estabilizado, melhoria contínua</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Timeline Total</h3>
+                <p style="color: white !important;"><strong style="color: white !important;">2 meses</strong> para processo maduro | <strong style="color: white !important;">1 mês</strong> para ver resultados significativos</p>
+            </div>
+            <div class="slide-number">29 / 39</div>
+        </div>
+
+        <!-- Slide 30: Próximos Passos Imediatos -->
+        <div class="slide">
+            <h2>Próximos Passos - Imediatos</h2>
+            <div style="margin-top: 30px;">
+                <div class="two-column">
+                    <div class="card">
+                        <h3>Esta Semana</h3>
+                        <ul>
+                            <li>✓ Aprovação do processo</li>
+                            <li>✓ Alocação de recursos</li>
+                            <li>✓ Definição de responsáveis</li>
+                            <li>✓ Agendamento de treinamento</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Próximas 2 Semanas</h3>
+                        <ul>
+                            <li>Configuração do Jira</li>
+                            <li>Setup do quadro Kanban</li>
+                            <li>Treinamento da equipe</li>
+                            <li>Início do piloto</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h3 style="color: white !important;">Aprovações Necessárias</h3>
+                <p style="color: white !important;">✓ Aprovação do processo | ✓ Alocação de tempo da equipe | ✓ Comprometimento com implementação</p>
+            </div>
+            <div class="slide-number">30 / 39</div>
+        </div>
+
+        <!-- Slide 31: Documentação Criada -->
+        <div class="slide">
+            <h2>Documentação Completa Criada</h2>
+            <div style="margin-top: 30px;">
+                <div class="two-column">
+                    <div>
+                        <h3>Documentos Principais</h3>
+                        <ul>
+                            <li>Processo de Qualidade (completo)</li>
+                            <li>Metodologia Kanban</li>
+                            <li>Guia de Progressão de Carreira</li>
+                            <li>Integração com Jira</li>
+                            <li>Integração BrowserStack</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Templates</h3>
+                        <ul>
+                            <li>Bug Report Template</li>
+                            <li>Test Plan Template</li>
+                            <li>Test Case Template</li>
+                            <li>Checklist Template</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Métricas</h3>
+                        <ul>
+                            <li>Definições de KPIs</li>
+                            <li>Dashboard de Métricas</li>
+                            <li>Guia de Coleta</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Avaliação</h3>
+                        <ul>
+                            <li>Matriz de Competências</li>
+                            <li>Questionário Junior</li>
+                            <li>Questionário Pleno</li>
+                            <li>Questionário Sênior</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">31 / 39</div>
+        </div>
+
+        <!-- Slide 32: Diferenciais -->
+        <div class="slide">
+            <h2>Diferenciais deste Processo</h2>
+            <div style="margin-top: 30px;">
+                <div class="highlight-box">
+                    <h3 style="color: white !important;">Processo Completo e Estruturado</h3>
+                    <p style="color: white !important;">✓ Adaptado para realidade da empresa | ✓ Documentação completa e prática</p>
+                </div>
+                <div class="two-column" style="margin-top: 30px;">
+                    <div class="card">
+                        <h3>Metodologia Kanban</h3>
+                        <p>Flexível, adaptável, focado em fluxo contínuo - ideal para entrega contínua</p>
+                    </div>
+                    <div class="card">
+                        <h3>Integração BrowserStack</h3>
+                        <p>Redução de custos, rastreabilidade completa, execução integrada</p>
+                    </div>
+                    <div class="card">
+                        <h3>Progressão de Carreira</h3>
+                        <p>Matriz de competências, questionários de avaliação, roadmap claro</p>
+                    </div>
+                    <div class="card">
+                        <h3>Métricas Completas</h3>
+                        <p>KPIs definidos, dashboard implementado, coleta automatizada</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">32 / 39</div>
+        </div>
+
+        <!-- Slide 33: Sucesso Esperado -->
+        <div class="slide">
+            <h2>Como Mediremos o Sucesso</h2>
+            <div style="margin-top: 30px;">
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">1 Mês</div>
+                        <div class="metric-label">Processo em uso</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">2 Meses</div>
+                        <div class="metric-label">Métricas estabilizadas</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">3 Meses</div>
+                        <div class="metric-label">Melhorias visíveis</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">6 Meses</div>
+                        <div class="metric-label">ROI comprovado</div>
+                    </div>
+                </div>
+            </div>
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="card">
+                    <h3>Indicadores de Sucesso</h3>
+                    <ul>
+                        <li>Redução de bugs em produção</li>
+                        <li>Aumento de throughput</li>
+                        <li>Redução de lead time</li>
+                        <li>Melhoria na satisfação da equipe</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Revisões</h3>
+                    <ul>
+                        <li>Revisão semanal (primeiro mês)</li>
+                        <li>Revisão mensal (após estabilização)</li>
+                        <li>Retrospectivas regulares</li>
+                        <li>Ajustes baseados em dados</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-number">33 / 39</div>
+        </div>
+
+        <!-- Slide 34: Comprometimento -->
+        <div class="slide">
+            <h2>Comprometimento Necessário</h2>
+            <div style="margin-top: 30px;">
+                <div class="two-column">
+                    <div class="card">
+                        <h3>Da Liderança</h3>
+                        <ul>
+                            <li>Aprovação e suporte ao processo</li>
+                            <li>Alocação de tempo da equipe</li>
+                            <li>Comprometimento com mudança</li>
+                            <li>Revisão regular de progresso</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Da Equipe</h3>
+                        <ul>
+                            <li>Adesão ao processo</li>
+                            <li>Uso dos templates</li>
+                            <li>Participação nas cerimônias</li>
+                            <li>Feedback contínuo</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Do QA Lead</h3>
+                        <ul>
+                            <li>Configuração inicial</li>
+                            <li>Treinamento da equipe</li>
+                            <li>Acompanhamento contínuo</li>
+                            <li>Melhoria do processo</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Resultado</h3>
+                        <ul>
+                            <li>Processo bem-sucedido</li>
+                            <li>Equipe engajada</li>
+                            <li>Melhorias contínuas</li>
+                            <li>ROI positivo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">34 / 39</div>
+        </div>
+
+        <!-- Slide 35: Perguntas Frequentes -->
+        <div class="slide">
+            <h2>Perguntas Frequentes</h2>
+            <div style="margin-top: 30px;">
+                <div class="card" style="margin-bottom: 20px;">
+                    <h3>Quanto tempo leva para ver resultados?</h3>
+                    <p>Resultados iniciais em 2-4 semanas. Melhorias significativas em 2-3 meses.</p>
+                </div>
+                <div class="card" style="margin-bottom: 20px;">
+                    <h3>Precisamos de ferramentas adicionais?</h3>
+                    <p>Não. Usamos Jira (já possui) e BrowserStack (já possui). Processo pode ser implementado com ferramentas existentes.</p>
+                </div>
+                <div class="card" style="margin-bottom: 20px;">
+                    <h3>E se a equipe resistir à mudança?</h3>
+                    <p>Processo inclui treinamento, comunicação clara e envolvimento da equipe. Mudanças são graduais e baseadas em feedback.</p>
+                </div>
+                <div class="card">
+                    <h3>Como garantimos que o processo será seguido?</h3>
+                    <p>Métricas de acompanhamento, revisões regulares, liderança comprometida e cultura de melhoria contínua.</p>
+                </div>
+            </div>
+            <div class="slide-number">35 / 39</div>
+        </div>
+
+        <!-- Slide 36: Resumo Executivo -->
+        <div class="slide">
+            <h2>Resumo Executivo</h2>
+            <div style="margin-top: 30px;">
+                <div class="highlight-box">
+                    <h3 style="color: white !important;">O que foi criado:</h3>
+                    <p style="color: white !important;">✓ Processo completo de qualidade estruturado<br>
+                    ✓ Metodologia Kanban implementada<br>
+                    ✓ Templates padronizados (bugs, test plans, test cases)<br>
+                    ✓ Métricas e KPIs definidos<br>
+                    ✓ Integração Jira + BrowserStack<br>
+                    ✓ Guia de progressão de carreira<br>
+                    ✓ Documentação completa</p>
+                </div>
+                <div class="two-column" style="margin-top: 30px;">
+                    <div class="card">
+                        <h3>Investimento</h3>
+                        <p><strong>R$ 0 em ferramentas</strong><br>
+                        Tempo da equipe para configuração e treinamento</p>
+                    </div>
+                    <div class="card">
+                        <h3>Retorno Esperado</h3>
+                        <ul style="text-align: left; margin-top: 10px;">
+                            <li>Redução de bugs encontrados</li>
+                            <li>Aumento de eficiência</li>
+                            <li>Melhoria de visualização de métricas do time</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">36 / 39</div>
+        </div>
+
+        <!-- Slide 37: Q&A -->
+        <div class="slide cover-slide">
+            <button class="home-btn" onclick="showSlide(0)" title="Voltar ao início">🏠 Início</button>
+            <h1>Perguntas?</h1>
+            <div style="margin-top: 100px; font-size: 2em;">
+                <p>Obrigado pela atenção!</p>
+            </div>
+            <div class="slide-number">37 / 39</div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Anterior</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Próximo →</button>
+    </div>
+
+    <div class="keyboard-hint">
+        Use ← → ou Espaço para navegar
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            if (n >= totalSlides) {
+                currentSlide = 0;
+            } else if (n < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = n;
+            }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide].classList.add('active');
+
+            // Update progress bar
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                changeSlide(1);
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                changeSlide(-1);
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                showSlide(0);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                showSlide(totalSlides - 1);
+            }
+        });
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                changeSlide(1);
+            }
+            if (touchEndX > touchStartX + 50) {
+                changeSlide(-1);
+            }
+        }
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
+
+</html>

@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "pdi-qa-junior-serverest-001",
+		"name": "ServeRest - PDI Prática",
+		"description": "Collection para prática de testes de API na Fase 1 do PDI QA Junior.\n\nAPI: https://serverest.dev/\nSwagger: https://serverest.dev/doc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://serverest.dev"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "userId",
+			"value": ""
+		},
+		{
+			"key": "productId",
+			"value": ""
+		}
+	],
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "POST Login - credenciais válidas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test('Response has message', function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('message');",
+									"    pm.expect(jsonData.message).to.include('Login realizado com sucesso');",
+									"});",
+									"",
+									"pm.test('Response has authorization token', function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('authorization');",
+									"    if (jsonData.authorization) {",
+									"        pm.collectionVariables.set('token', jsonData.authorization);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"fulano@qa.com\",\n  \"password\": \"teste\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": ["{{baseUrl}}"],
+							"path": ["login"]
+						},
+						"description": "Login com usuário padrão da ServeRest. Salva o token na variável da collection."
+					}
+				}
+			]
+		},
+		{
+			"name": "Usuários",
+			"item": [
+				{
+					"name": "POST Criar usuário",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 201', function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test('Response has _id', function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('_id');",
+									"    if (jsonData._id) {",
+									"        pm.collectionVariables.set('userId', jsonData._id);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Usuario PDI Teste\",\n  \"email\": \"pdi.teste{{$randomInt}}@qa.com\",\n  \"password\": \"teste123\",\n  \"administrador\": \"false\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": ["{{baseUrl}}"],
+							"path": ["usuarios"]
+						},
+						"description": "Cria novo usuário. Usa {{$randomInt}} para email único."
+					}
+				},
+				{
+					"name": "GET Listar usuários",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test('Response has usuarios array', function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('usuarios');",
+									"    pm.expect(jsonData.usuarios).to.be.an('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios",
+							"host": ["{{baseUrl}}"],
+							"path": ["usuarios"]
+						},
+						"description": "Lista todos os usuários cadastrados."
+					}
+				},
+				{
+					"name": "GET Buscar usuário por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/usuarios/{{userId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["usuarios", "{{userId}}"]
+						},
+						"description": "Busca usuário pelo ID. Use userId da variável (preenchido após criar usuário)."
+					}
+				}
+			]
+		},
+		{
+			"name": "Produtos",
+			"item": [
+				{
+					"name": "POST Criar produto",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Login necessário para criar produto - token deve estar na variável"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 201', function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test('Response has _id', function () {",
+									"    var jsonData = pm.response.json();",
+									"    if (jsonData._id) {",
+									"        pm.collectionVariables.set('productId', jsonData._id);",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Produto PDI {{$randomInt}}\",\n  \"preco\": 100,\n  \"descricao\": \"Produto para teste PDI\",\n  \"quantidade\": 10\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/produtos",
+							"host": ["{{baseUrl}}"],
+							"path": ["produtos"]
+						},
+						"description": "Cria produto. Requer token de autenticação (executar Login antes)."
+					}
+				},
+				{
+					"name": "GET Listar produtos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test('Response has produtos array', function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('produtos');",
+									"    pm.expect(jsonData.produtos).to.be.an('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/produtos",
+							"host": ["{{baseUrl}}"],
+							"path": ["produtos"]
+						},
+						"description": "Lista todos os produtos."
+					}
+				}
+			]
+		}
+	]
+}

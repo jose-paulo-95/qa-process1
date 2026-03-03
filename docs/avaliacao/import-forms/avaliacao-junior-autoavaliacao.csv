@@ -1,0 +1,81 @@
+Questions,Types,Descriptions,Option1,Option2,Option3,Option4,Option5,Option6,Option7,Option8,Required
+"Avaliação QA Junior - Autoavaliação
+Preencha antes da sua reunião de avaliação. Suas respostas ajudarão a personalizar o PDI.",TITLE AND DESCRIPTION,,,,,,,,,FALSE
+"=== PERFIL E CONTEXTO ===",SECTION,,,,,,,,,FALSE
+Nome completo,TEXT,,,,,,,,,TRUE
+Data desta autoavaliação,DATE,,,,,,,,,TRUE
+Tempo de experiência em QA,DROPDOWN,,0-6 meses,6 meses - 1 ano,1-2 anos,,,,,TRUE
+Projetos ou áreas em que você atuou (breve descrição),PARAGRAPH,,,,,,,,,TRUE
+Nome do seu líder/avaliador,TEXT,,,,,,,,,TRUE
+"=== AUTO-REFLEXÃO ===",SECTION,,,,,,,,,FALSE
+"As perguntas abaixo ajudam a entender suas metas e preferências. Não há resposta certa ou errada - seja sincero.",TITLE AND DESCRIPTION,,,,,,,,,FALSE
+Quais são suas metas de carreira para os próximos 12 meses? O que você quer alcançar?,PARAGRAPH,,,,,,,,,TRUE
+Quais áreas de QA mais te interessam? (selecione até 3),CHECKBOX,,Automação,Testes de API,Testes manuais,Performance,Segurança,Mobile,Acessibilidade,Outro,TRUE
+Quais são seus principais desafios atuais no dia a dia? O que mais te dificulta?,PARAGRAPH,,,,,,,,,TRUE
+Como você prefere aprender? (selecione todas que se aplicam),CHECKBOX,,Curso online,Mentoria 1:1,Prática hands-on,Leitura,Pair programming,Workshops,,,,TRUE
+O que você gostaria de desenvolver primeiro? Priorize até 3 itens.,PARAGRAPH,,,,,,,,,TRUE
+"=== MATRIZ DE COMPETÊNCIAS ===
+Escala: 1=Não conhece | 2=Conheço o conceito | 3=Conheço parcialmente | 4=Utilizo com autonomia | 5=Domino",TITLE AND DESCRIPTION,,,,,,,,,FALSE
+"--- Fundamentos de QA ---",SECTION,,,,,,,,,FALSE
+Ciclo de vida de software,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Tipos de teste,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Criação de casos de teste,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Severidade/Prioridade,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Reporte de bugs,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+"--- Testes Manuais ---",SECTION,,,,,,,,,FALSE
+Execução de testes,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Testes exploratórios,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Validação de requisitos,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Testes de regressão,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+"--- Automação Cypress (Básico) ---",SECTION,,,,,,,,,FALSE
+Instalação e setup Cypress,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Comandos básicos (cy.get cy.click cy.type cy.visit),LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Seletores,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Assertions,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Fixtures,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Custom Commands,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Page Object Model,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Interceptação de requests,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+CI/CD,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Debugging,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+"--- Automação Selenium ---",SECTION,,,,,,,,,FALSE
+Setup e configuração Selenium,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+WebDriver,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Page Object Model Selenium,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Waits e sincronização,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+"--- Testes de API Postman ---",SECTION,,,,,,,,,FALSE
+Criação de requests,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Collections,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Variáveis Postman,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Scripts Pre/Test,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Testes automatizados Postman,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Newman CLI,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Documentação requests,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Mock servers,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+"--- Testes de API Swagger ---",SECTION,,,,,,,,,FALSE
+Leitura de documentação Swagger,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Validação de contratos,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Testes baseados em Swagger,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+OpenAPI/Swagger specs,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+"--- Ferramentas e Tecnologias ---",SECTION,,,,,,,,,FALSE
+Jira,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Git,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+SQL,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Docker,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+DevTools,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Logs e debugging,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+"--- Liderança e Processo ---",SECTION,,,,,,,,,FALSE
+Planejamento de testes,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Estimativa,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Code review,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Mentoria,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Processo de qualidade,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Métricas e KPIs,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Comunicação técnica,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+"--- Competências Comportamentais (Soft Skills) ---",SECTION,,,,,,,,,FALSE
+Comunicação clara (oral e escrita),LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Atenção aos detalhes,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Trabalho em equipe,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Pensamento crítico,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Curiosidade e aprendizado,LINEAR SCALE,,1,2,3,4,5,,,,TRUE
+Empatia (advocacia do usuário),LINEAR SCALE,,1,2,3,4,5,,,,TRUE

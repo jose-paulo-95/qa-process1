@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* Prose improvements for course content */
+.prose {
+  @apply max-w-none;
+}
+.prose table {
+  @apply my-6 w-full table-auto border-collapse;
+}
+.prose th,
+.prose td {
+  @apply border border-zinc-200 px-4 py-3 dark:border-zinc-700;
+}
+.prose th {
+  @apply bg-zinc-100 font-semibold dark:bg-zinc-800;
+}
+.prose a {
+  @apply text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300;
+}
+/* Evitar que tabelas quebrem o layout */
+.prose > * + table,
+.prose > table + * {
+  @apply mt-6;
+}
+
+/* Focus visible for accessibility */
+button:focus-visible,
+a:focus-visible {
+  @apply outline-none ring-2 ring-emerald-500 ring-offset-2 dark:ring-offset-zinc-900;
+}
