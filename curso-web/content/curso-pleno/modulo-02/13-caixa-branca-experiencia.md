@@ -45,7 +45,7 @@ Para dar **estrutura** à exploração, use um **charter** (objetivo da sessão 
 
 **Objetivo:** Praticar definição de charter.
 
-**Recursos:** Aplicação com login (ex: ServeRest) ou cenário fictício
+**Recursos:** Aplicação com login (ex: DummyJSON) ou cenário fictício
 
 **Enunciado:** Para um fluxo de login (email + senha), escreva um charter em uma frase que defina o objetivo de uma sessão exploratória de 45 minutos.
 

@@ -464,7 +464,7 @@ Este guia estabelece o caminho de progressão de carreira para profissionais de 
 A matriz de competências e o questionário de avaliação foram organizados em arquivos separados por nível para facilitar o uso:
 
 - **[Avaliação QA Junior](avaliacao/avaliacao-junior.md)**: Matriz de competências e questionário específicos para QA Junior
-- **[PDI - Materiais de apoio](avaliacao/pdi/README.md)**: Checklists, template de mentoria, glossário e projeto Postman ServeRest
+- **[PDI - Materiais de apoio](avaliacao/pdi/README.md)**: Checklists, template de mentoria, glossário e projeto Postman DummyJSON
 - **[Avaliação QA Pleno](avaliacao/avaliacao-pleno.md)**: Matriz de competências e questionário específicos para QA Pleno
 - **[Avaliação QA Sênior](avaliacao/avaliacao-senior.md)**: Matriz de competências e questionário específicos para QA Sênior
 

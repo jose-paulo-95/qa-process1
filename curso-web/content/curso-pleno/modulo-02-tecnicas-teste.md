@@ -60,7 +60,7 @@ Perguntas para descobrir edge cases:
 
 **Objetivo:** Aplicar particionamento de equivalência em endpoint de usuários.
 
-**Recursos:** ServeRest (https://serverest.dev), Postman
+**Recursos:** DummyJSON (https://dummyjson.com), Postman
 
 **Enunciado:** O endpoint `GET /usuarios/{{id}}` retorna usuário por ID. Quais classes de equivalência você identificaria e qual valor testaria em cada?
 
@@ -80,7 +80,7 @@ Perguntas para descobrir edge cases:
 
 **Objetivo:** Criar matriz de cenários para login.
 
-**Recursos:** ServeRest (https://serverest.dev), Postman
+**Recursos:** DummyJSON (https://dummyjson.com), Postman
 
 **Enunciado:** Para um endpoint POST /login com email e password, liste 5 cenários (positivos e negativos) que você testaria.
 

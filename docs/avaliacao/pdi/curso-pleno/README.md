@@ -32,7 +32,7 @@ Preparar o aluno para as competências de QA Pleno: autonomia, planejamento, aut
 
 ## Recursos
 
-- API ServeRest: https://serverest.dev/
-- Postman collection: [postman-serverest/](../postman-serverest/)
+- API DummyJSON: https://dummyjson.com/
+- Postman collection: [postman-dummyjson/](../postman-dummyjson/)
 - Boas práticas: [boas-praticas-qa.md](../boas-praticas-qa.md)
 - Glossário: [glossario-qa.md](../glossario-qa.md)

@@ -51,22 +51,22 @@ export default function HomePage() {
         <ul className="space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
           <li>
             <a
-              href="https://serverest.dev/"
+              href="https://dummyjson.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-600 hover:underline dark:text-emerald-400"
             >
-              API ServeRest
+              API DummyJSON
             </a>
           </li>
           <li>
             <a
-              href="https://serverest.dev/doc"
+              href="https://dummyjson.com/docs"
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald-600 hover:underline dark:text-emerald-400"
             >
-              Swagger ServeRest
+              Docs DummyJSON
             </a>
           </li>
         </ul>

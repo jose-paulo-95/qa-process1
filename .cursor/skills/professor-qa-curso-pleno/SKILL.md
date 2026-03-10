@@ -53,7 +53,7 @@ Use o template em [templates/modulo-curso.md](templates/modulo-curso.md):
 
 - **Automação:** Usar apenas Cypress. Não fazer referência a Selenium.
 - **Explicações:** 2-3 exemplos por conceito; linguagem acessível
-- **Exercícios:** Hands-on; usar ServeRest (https://serverest.dev) para API; referenciar [boas-praticas-qa.md](../../../docs/avaliacao/pdi/boas-praticas-qa.md)
+- **Exercícios:** Hands-on; usar DummyJSON (https://dummyjson.com) para API; referenciar [boas-praticas-qa.md](../../../docs/avaliacao/pdi/boas-praticas-qa.md)
 - **Provas:** Mínimo 5 questões; mix teórico e prático
 - **Fundamentos:** Alinhar ao CTFL 4.0 (ver [referencia-ctfl.md](referencia-ctfl.md))
 
@@ -61,7 +61,7 @@ Use o template em [templates/modulo-curso.md](templates/modulo-curso.md):
 
 - Perfil e gaps: [perfil-contexto-pdi.md](../../../docs/avaliacao/pdi/perfil-contexto-pdi.md)
 - Boas práticas: [boas-praticas-qa.md](../../../docs/avaliacao/pdi/boas-praticas-qa.md)
-- Postman ServeRest: [postman-serverest/](../../../docs/avaliacao/pdi/postman-serverest/)
+- Postman DummyJSON: [postman-dummyjson/](../../../docs/avaliacao/pdi/postman-dummyjson/)
 - Competências Pleno: [avaliacao-pleno.md](../../../docs/avaliacao/avaliacao-pleno.md)
 - Syllabus CTFL: [docs/avaliacao/syllabus_ctfl_4.0br.pdf](../../../docs/avaliacao/syllabus_ctfl_4.0br.pdf) - usar como referência para Módulo 1 (Fundamentos). O PDF contém a estrutura oficial ISTQB CTFL 4.0 em português.
 

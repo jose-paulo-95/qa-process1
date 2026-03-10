@@ -6,7 +6,7 @@
 
 **Referência:** [Descomplicando Testes de API Rest](https://descomplicando.juliodelima.com.br/)
 
-**API de prática:** [ServeRest](https://serverest.dev/) | Swagger: https://serverest.dev/doc
+**API de prática:** [DummyJSON](https://dummyjson.com/) | Docs: https://dummyjson.com/docs
 
 ---
 
@@ -22,7 +22,7 @@
 | PATCH | Atualizar parcial | Atualizar apenas nome |
 | DELETE | Remover | Excluir usuário |
 
-**Exemplo:** ServeRest - POST /usuarios cria usuário; GET /usuarios lista; GET /usuarios/{{id}} busca um.
+**Exemplo:** DummyJSON - POST /users/add cria usuário; GET /users lista; GET /users/{{id}} busca um.
 
 ### 3.2 Collections e Organização
 
@@ -37,7 +37,7 @@
 - **Environment:** troca entre DEV, QA, PROD (baseUrl, token)
 - **Globais:** em todo o Postman
 
-**Exemplo:** `{{baseUrl}}/usuarios` onde baseUrl = https://serverest.dev no environment.
+**Exemplo:** `{{baseUrl}}/users` onde baseUrl = https://dummyjson.com no environment.
 
 ### 3.4 Scripts Pre-request e Tests
 
@@ -49,8 +49,8 @@
 pm.test("Status 200", () => pm.response.to.have.status(200));
 pm.test("Tem campo _id", () => {
   const json = pm.response.json();
-  pm.expect(json).to.have.property("_id");
-  pm.collectionVariables.set("userId", json._id);
+  pm.expect(json).to.have.property("id");
+  pm.collectionVariables.set("userId", json.id);
 });
 ```
 
@@ -66,23 +66,23 @@ newman run collection.json -e environment.json
 
 ## Exercícios
 
-### Exercício 1: Collection ServeRest
+### Exercício 1: Collection DummyJSON
 
 **Objetivo:** Criar collection com CRUD de usuários.
 
-**Recursos:** ServeRest (https://serverest.dev), Postman
+**Recursos:** DummyJSON (https://dummyjson.com), Postman
 
-**Enunciado:** Crie uma collection "ServeRest - Usuários" com: POST /login, POST /usuarios, GET /usuarios, GET /usuarios/{{userId}}, PUT /usuarios/{{userId}}, DELETE /usuarios/{{userId}}. Use variável baseUrl no environment.
+**Enunciado:** Crie uma collection "DummyJSON - Usuários" com: POST /auth/login, POST /users/add, GET /users, GET /users/{{userId}}, PUT /users/{{userId}}, DELETE /users/{{userId}}. Use variável baseUrl no environment.
 
-**Resposta esperada:** Collection com 6 requests, environment com baseUrl = https://serverest.dev. Para PUT/DELETE por ID, usar variável userId preenchida pelo script Tests do POST /usuarios.
+**Resposta esperada:** Collection com 6 requests, environment com baseUrl = https://dummyjson.com. Para PUT/DELETE por ID, usar variável userId preenchida pelo script Tests do POST /users/add. Login: username "emilys", password "emilyspass".
 
 ### Exercício 2: Scripts de validação
 
 **Objetivo:** Adicionar assertions em 5 requests.
 
-**Recursos:** Postman, ServeRest, [boas-praticas-qa.md](../../../docs/avaliacao/pdi/boas-praticas-qa.md)
+**Recursos:** Postman, DummyJSON, [boas-praticas-qa.md](../../../docs/avaliacao/pdi/boas-praticas-qa.md)
 
-**Enunciado:** Em cada request da collection, adicione na aba Tests pelo menos: (1) validação de status code, (2) validação de que a resposta tem a estrutura esperada (ex: pm.expect(json).to.have.property("usuarios")). Ao encontrar uma falha, documente seguindo [boas-praticas-qa.md](../../../docs/avaliacao/pdi/boas-praticas-qa.md) (título objetivo, passos, evidências).
+**Enunciado:** Em cada request da collection, adicione na aba Tests pelo menos: (1) validação de status code, (2) validação de que a resposta tem a estrutura esperada (ex: pm.expect(json).to.have.property("users")). Ao encontrar uma falha, documente seguindo [boas-praticas-qa.md](../../../docs/avaliacao/pdi/boas-praticas-qa.md) (título objetivo, passos, evidências).
 
 **Resposta esperada:** Scripts como pm.test("Status 200", () => pm.response.to.have.status(200)); e validação de propriedades do JSON.
 
@@ -90,11 +90,11 @@ newman run collection.json -e environment.json
 
 **Objetivo:** Fazer o resultado de uma request alimentar a próxima.
 
-**Recursos:** Postman, ServeRest (https://serverest.dev)
+**Recursos:** Postman, DummyJSON (https://dummyjson.com)
 
-**Enunciado:** Configure o fluxo: (1) POST /login → salvar token em variável; (2) POST /produtos (requer Authorization) → usar {{token}}. Execute a collection na ordem.
+**Enunciado:** Configure o fluxo: (1) POST /auth/login → salvar accessToken em variável; (2) GET /auth/me (requer Authorization) → usar Bearer {{token}}. Execute a collection na ordem.
 
-**Resposta esperada:** No Tests do login: pm.collectionVariables.set("token", jsonData.authorization). No POST /produtos, header Authorization: {{token}}.
+**Resposta esperada:** No Tests do login: pm.collectionVariables.set("token", jsonData.accessToken). No GET /auth/me, header Authorization: Bearer {{token}}.
 
 ### Exercício 4: Newman
 
@@ -147,7 +147,7 @@ Para que serve o Newman? Em que cenário você o utilizaria no dia a dia?
 
 ### Questão 6 (Prática)
 
-Crie um request POST /login no Postman para a ServeRest. Qual é o body necessário? Qual script você adicionaria na aba Tests para salvar o token retornado?
+Crie um request POST /auth/login no Postman para a DummyJSON. Qual é o body necessário? Qual script você adicionaria na aba Tests para salvar o token retornado?
 
 ---
 
@@ -160,7 +160,7 @@ Crie um request POST /login no Postman para a ServeRest. Qual é o body necessá
 | 3 | b |
 | 4 | pm.test("Status 201", () => pm.response.to.have.status(201)); pm.test("Message correto", () => { const j = pm.response.json(); pm.expect(j.message).to.include("Cadastro realizado com sucesso"); }); |
 | 5 | Newman executa collections via CLI. Usado em CI/CD para rodar testes de API automaticamente em cada build/deploy. |
-| 6 | Body: {"email":"fulano@qa.com","password":"teste"}. Tests: var j = pm.response.json(); if(j.authorization) pm.collectionVariables.set("token", j.authorization); |
+| 6 | Body: {"username":"emilys","password":"emilyspass"}. Tests: var j = pm.response.json(); if(j.accessToken) pm.collectionVariables.set("token", j.accessToken); |
 
 ---
 

@@ -1,4 +1,6 @@
-# Projeto Postman - ServeRest API
+# Projeto Postman - ServeRest API (legado)
+
+> **Nota:** A API ServeRest está temporariamente indisponível. Use o projeto [postman-dummyjson/](../postman-dummyjson/) como alternativa.
 
 Projeto de prática para testes de API utilizando Postman, baseado na API [ServeRest](https://serverest.dev/).
 

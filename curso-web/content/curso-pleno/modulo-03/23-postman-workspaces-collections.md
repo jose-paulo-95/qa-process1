@@ -12,7 +12,7 @@ Workspaces organizam seu trabalho no Postman:
 - **Team:** compartilhado com a equipe
 - **Public:** visível para qualquer um
 
-Use workspaces para separar projetos (ex: ServeRest, API interna).
+Use workspaces para separar projetos (ex: DummyJSON, API interna).
 
 ---
 
@@ -53,9 +53,9 @@ Use nomes descritivos para facilitar manutenção.
 
 ---
 
-## API ServeRest
+## API DummyJSON
 
-Base: **https://serverest.dev**
+Base: **https://dummyjson.com**
 
 Exemplos de endpoints:
 
@@ -64,4 +64,4 @@ Exemplos de endpoints:
 - `POST /usuarios` – criar usuário
 - `GET /produtos` – listar produtos
 
-ServeRest simula um e-commerce para praticar testes de API.
+DummyJSON oferece dados de e-commerce para praticar testes de API.

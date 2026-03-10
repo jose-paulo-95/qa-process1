@@ -12,8 +12,8 @@ Esta pasta contém os materiais de apoio para execução do PDI baseado na autoa
 
 ## Projeto de Prática
 
-A pasta [postman-serverest/](postman-serverest/) contém:
-- Collection Postman para a API ServeRest
+A pasta [postman-dummyjson/](postman-dummyjson/) contém:
+- Collection Postman para a API DummyJSON
 - Environment com variáveis
 - README com cenários de teste sugeridos
 

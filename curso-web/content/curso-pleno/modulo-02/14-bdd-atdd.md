@@ -45,9 +45,9 @@ Ferramentas: Cucumber, SpecFlow, Behave.
 
 **Objetivo:** Escrever cenário BDD para endpoint.
 
-**Recursos:** ServeRest (https://serverest.dev), documentação da API
+**Recursos:** DummyJSON (https://dummyjson.com), documentação da API
 
-**Enunciado:** Para o endpoint POST /login da ServeRest, escreva um cenário Gherkin (Dado/Quando/Então) cobrindo login com sucesso e outro para credenciais inválidas.
+**Enunciado:** Para o endpoint POST /auth/login da DummyJSON, escreva um cenário Gherkin (Dado/Quando/Então) cobrindo login com sucesso e outro para credenciais inválidas.
 
 **Resposta esperada:**
 ```gherkin

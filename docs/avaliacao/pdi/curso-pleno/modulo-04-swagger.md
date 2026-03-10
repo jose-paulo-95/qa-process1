@@ -4,7 +4,7 @@
 
 **Duração estimada:** 4 horas
 
-**Referência:** ServeRest Swagger - https://serverest.dev/doc
+**Referência:** DummyJSON Docs - https://dummyjson.com/docs
 
 ---
 
@@ -28,7 +28,7 @@ Ao abrir um Swagger, identifique:
 - **Schemas:** estrutura do JSON (campos, tipos, obrigatórios)
 - **Responses:** 200, 201, 400, 401, 404, 500
 
-**Exemplo:** No Swagger da ServeRest, POST /usuarios exige body com nome, email, password, administrador. Resposta 201 com _id.
+**Exemplo:** Na DummyJSON, POST /users/add exige body com firstName, lastName, age (entre outros). Resposta 201 com id.
 
 ### 4.3 Validação de Contratos
 
@@ -46,40 +46,40 @@ Ou valide propriedades manualmente:
 ```javascript
 pm.test("Response tem estrutura correta", () => {
   const j = pm.response.json();
-  pm.expect(j).to.have.property("usuarios");
-  pm.expect(j.usuarios).to.be.an("array");
+  pm.expect(j).to.have.property("users");
+  pm.expect(j.users).to.be.an("array");
 });
 ```
 
 ### 4.4 Importar Collection do Swagger
 
-No Postman: File → Import → Link → colar URL do Swagger (ex: https://serverest.dev/doc). O Postman gera a collection com os endpoints.
+No Postman: crie requests manualmente ou use a documentação em https://dummyjson.com/docs para montar a collection.
 
 ---
 
 ## Exercícios
 
-### Exercício 1: Analisar Swagger ServeRest
+### Exercício 1: Analisar documentação DummyJSON
 
 **Objetivo:** Extrair informações da documentação.
 
-**Enunciado:** Abra https://serverest.dev/doc. Responda: (1) Quais endpoints existem para /usuarios? (2) Quais campos são obrigatórios no POST /usuarios? (3) Qual o formato da resposta do GET /usuarios?
+**Enunciado:** Abra https://dummyjson.com/docs/users. Responda: (1) Quais endpoints existem para /users? (2) Quais campos são usados no POST /users/add? (3) Qual o formato da resposta do GET /users?
 
-**Resposta esperada:** (1) GET, POST, GET /usuarios/:id, PUT, DELETE. (2) nome, email, password, administrador. (3) Objeto com propriedade "usuarios" (array) e "quantidade".
+**Resposta esperada:** (1) GET /users, GET /users/:id, POST /users/add, PUT /users/:id, PATCH /users/:id, DELETE /users/:id. (2) firstName, lastName, age, entre outros. (3) Objeto com propriedade "users" (array), "total", "skip", "limit".
 
-### Exercício 2: Importar e validar
+### Exercício 2: Validar respostas
 
-**Objetivo:** Importar collection do Swagger e adicionar validações.
+**Objetivo:** Criar requests e adicionar validações conforme documentação.
 
-**Enunciado:** Importe a collection da ServeRest via Swagger no Postman. Em 3 requests, adicione validação de que a resposta tem as propriedades esperadas conforme o schema do Swagger.
+**Enunciado:** Crie requests para GET /users, GET /users/1 e GET /products no Postman. Em cada um, adicione validação de que a resposta tem as propriedades esperadas conforme a documentação.
 
-**Resposta esperada:** Scripts pm.expect(json).to.have.property("X") para cada propriedade documentada.
+**Resposta esperada:** Scripts pm.expect(json).to.have.property("users") ou pm.expect(json).to.have.property("id") conforme o endpoint.
 
 ### Exercício 3: Identificar problemas na documentação
 
 **Objetivo:** Pensamento crítico sobre documentação.
 
-**Enunciado:** Ao comparar o Swagger com o comportamento real da API ServeRest, existem inconsistências? Teste um endpoint e verifique se a resposta bate com o documentado.
+**Enunciado:** Ao comparar a documentação com o comportamento real da API DummyJSON, existem inconsistências? Teste um endpoint e verifique se a resposta bate com o documentado.
 
 **Resposta esperada:** Pode haver diferenças (ex: campos extras, formato de erro). O aluno deve documentar o que encontrou.
 
@@ -111,7 +111,7 @@ Qual a diferença entre Swagger UI e Swagger Editor?
 
 ### Questão 4 (Prática)
 
-No Postman, como você validaria que a resposta do GET /usuarios da ServeRest contém um array na propriedade "usuarios"?
+No Postman, como você validaria que a resposta do GET /users da DummyJSON contém um array na propriedade "users"?
 
 ### Questão 5 (Dissertativa)
 
@@ -126,7 +126,7 @@ Por que é importante validar o contrato da API e não apenas verificar o status
 | 1 | b |
 | 2 | b |
 | 3 | Swagger UI visualiza a documentação de forma interativa. Swagger Editor permite editar o arquivo YAML/JSON da especificação. |
-| 4 | pm.test("usuarios é array", () => { const j = pm.response.json(); pm.expect(j).to.have.property("usuarios"); pm.expect(j.usuarios).to.be.an("array"); }); |
+| 4 | pm.test("users é array", () => { const j = pm.response.json(); pm.expect(j).to.have.property("users"); pm.expect(j.users).to.be.an("array"); }); |
 | 5 | Status code pode ser 200 mas o body pode estar incorreto (campos faltando, tipo errado). Validar contrato garante que a API entrega o que prometeu, evitando bugs em integrações. |
 
 ---

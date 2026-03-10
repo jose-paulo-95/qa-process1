@@ -47,7 +47,7 @@ O frontend depende da API. Se a API retorna dados incorretos, o bug se propaga. 
 
 ## Ambiente de prática
 
-Para praticar, use a **ServeRest** (https://serverest.dev): API REST pronta, sem instalação. Simula um e-commerce com usuários, produtos e carrinhos. Documentação Swagger em https://serverest.dev/doc.
+Para praticar, use a **DummyJSON** (https://dummyjson.com): API REST pronta, sem instalação. Oferece usuários, produtos, carrinhos e autenticação. Documentação em https://dummyjson.com/docs.
 
 ---
 

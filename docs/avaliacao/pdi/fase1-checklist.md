@@ -40,33 +40,33 @@ Eliminar gaps em ciclo de vida de software, Postman e Swagger. Alinhado às meta
 
 ## Mês 2
 
-### Postman prático - ServeRest
-- [ ] Acessar API ServeRest: https://serverest.dev/
-- [ ] Documentação Swagger: https://serverest.dev/doc
-- [ ] Criar collection "ServeRest - Prática PDI" com:
-  - [ ] POST /login (autenticação)
-  - [ ] GET /usuarios (listar usuários)
-  - [ ] POST /usuarios (criar usuário)
-  - [ ] GET /usuarios/{{_id}} (buscar por ID)
-  - [ ] PUT /usuarios/{{_id}} (editar)
-  - [ ] DELETE /usuarios/{{_id}} (excluir)
-  - [ ] GET /produtos, POST /produtos, etc.
+### Postman prático - DummyJSON
+- [ ] Acessar API DummyJSON: https://dummyjson.com/
+- [ ] Documentação: https://dummyjson.com/docs
+- [ ] Criar collection "DummyJSON - Prática PDI" com:
+  - [ ] POST /auth/login (autenticação - username: emilys, password: emilyspass)
+  - [ ] GET /users (listar usuários)
+  - [ ] POST /users/add (criar usuário)
+  - [ ] GET /users/{{id}} (buscar por ID)
+  - [ ] PUT /users/{{id}} (editar)
+  - [ ] DELETE /users/{{id}} (excluir)
+  - [ ] GET /products, GET /carts, etc.
 - [ ] Adicionar scripts na aba **Tests** em pelo menos 5 requests (ex: `pm.response.to.have.status(200)`)
 - [ ] Meta: 10+ requests com scripts de validação
 
-### Swagger + Postman
+### Documentação + Postman
 - [ ] Ler [DIO - Preparando Postman com Swagger UI](https://www.dio.me/articles/preparando-postman-com-auxilio-do-swagger-ui)
-- [ ] Importar collection a partir do Swagger da ServeRest (File → Import → Link)
-- [ ] Configurar variáveis de ambiente (base URL: https://serverest.dev)
+- [ ] Importar collection do [postman-dummyjson/](postman-dummyjson/) ou criar manualmente com base em https://dummyjson.com/docs
+- [ ] Configurar variáveis de ambiente (base URL: https://dummyjson.com)
 
 ### Mentoria
 - [ ] Agendar 1 sessão com QA Pleno (usar [template-mentoria.md](template-mentoria.md))
 - [ ] Tópicos: Postman collections, validação de API, scripts Tests
-- [ ] Incluir na pauta: **"Como aplicar o que aprendi no ServeRest ao meu projeto (TruMe, DeepClaim)?"**
+- [ ] Incluir na pauta: **"Como aplicar o que aprendi no DummyJSON ao meu projeto (TruMe, DeepClaim)?"**
 
 ### Métrica de sucesso Mês 2
 - [ ] Collection com 10+ requests e scripts Tests
-- [ ] Importou collection a partir do Swagger
+- [ ] Importou ou criou collection com base na documentação
 
 ---
 
@@ -74,9 +74,9 @@ Eliminar gaps em ciclo de vida de software, Postman e Swagger. Alinhado às meta
 
 ### Consolidação e exercícios
 - [ ] [GitHub - MuriloGMunhoz/desafio-api-QA](https://github.com/MuriloGMunhoz/desafio-api-QA) - resolver cenários de teste
-- [ ] [GitHub - marisilveirat/Testes_Postman_Serverest](https://github.com/marisilveirat/testes_postman_serverest) - estudar exemplos
+- [ ] [GitHub - marisilveirat/Testes_Postman_Serverest](https://github.com/marisilveirat/testes_postman_serverest) - estudar exemplos (adaptar para DummyJSON)
 - [ ] Aplicar feedback da mentoria no projeto
-- [ ] Documentar cenários testados no projeto postman-serverest
+- [ ] Documentar cenários testados no projeto postman-dummyjson
 - [ ] **Aplicabilidade:** Listar 2-3 endpoints do projeto atual e criar requests equivalentes no Postman (ver [boas-praticas-qa.md](boas-praticas-qa.md))
 - [ ] **Validação de requisitos:** Na próxima story, usar checklist de [boas-praticas-qa.md](boas-praticas-qa.md) seção 5
 
@@ -91,8 +91,8 @@ Eliminar gaps em ciclo de vida de software, Postman e Swagger. Alinhado às meta
 | Recurso | Link |
 |---------|------|
 | TAU Postman | https://testautomationu.applitools.com/postman-tutorial/ |
-| ServeRest API | https://serverest.dev/ |
-| ServeRest Swagger | https://serverest.dev/doc |
+| DummyJSON API | https://dummyjson.com/ |
+| DummyJSON Docs | https://dummyjson.com/docs |
 | Postman Learning Center | https://learning.postman.com/ |
 | DIO Postman + Swagger | https://www.dio.me/articles/preparando-postman-com-auxilio-do-swagger-ui |
 

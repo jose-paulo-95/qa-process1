@@ -33,7 +33,7 @@ Conceitos detalhados em [kpi-definitions.md](../../../../metricas/kpi-definition
 
 **Objetivo:** Praticar análise de logs e DevTools.
 
-**Recursos:** Aplicação web (projeto real ou ServeRest), DevTools do navegador
+**Recursos:** Aplicação web (projeto real ou DummyJSON), DevTools do navegador
 
 **Enunciado:** Reproduza um bug real (ou simule um 500). Documente em 5 passos como você usou DevTools e stack trace para chegar à causa. Compartilhe na próxima mentoria para feedback.
 

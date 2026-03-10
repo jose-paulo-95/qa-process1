@@ -72,10 +72,10 @@ export const REFERENCIAS_POR_MODULO: Record<number, Referencia[]> = {
       description: "Documentação oficial do Postman",
     },
     {
-      title: "API ServeRest",
-      url: "https://serverest.dev/",
+      title: "API DummyJSON",
+      url: "https://dummyjson.com/",
       type: "documentacao",
-      description: "API para praticar testes (e-commerce fictício)",
+      description: "API para praticar testes (usuários, produtos, carrinhos)",
     },
     {
       title: "Newman - npm",

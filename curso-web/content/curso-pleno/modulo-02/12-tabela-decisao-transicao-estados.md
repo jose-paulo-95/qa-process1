@@ -65,7 +65,7 @@ Usada para sistemas com **estados** e **transições** (ex: fluxo de pedido).
 
 **Objetivo:** Praticar transição de estados.
 
-**Recursos:** Fluxo de pedido (ServeRest ou fictício)
+**Recursos:** Fluxo de pedido (DummyJSON ou fictício)
 
 **Enunciado:** Estados de um pedido: Rascunho → Enviado → Pago → Entregue. Liste 3 transições válidas e 2 inválidas (ex: Pago → Rascunho) que você testaria.
 

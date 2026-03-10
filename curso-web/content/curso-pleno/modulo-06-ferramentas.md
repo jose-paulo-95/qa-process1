@@ -87,7 +87,7 @@ Conceitos (ver [kpi-definitions.md](../../../metricas/kpi-definitions.md)):
 
 **Objetivo:** Praticar análise de logs.
 
-**Recursos:** Navegador (DevTools), aplicação web ou ServeRest
+**Recursos:** Navegador (DevTools), aplicação web ou DummyJSON
 
 **Enunciado:** Reproduza um bug (ou simule) em uma aplicação. Use DevTools Network e Console. Documente em 5 passos: como você identificou a causa do problema.
 

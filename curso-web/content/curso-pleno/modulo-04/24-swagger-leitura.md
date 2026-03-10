@@ -18,6 +18,6 @@ Especificação para descrever APIs REST. Permite ver endpoints, métodos, parâ
 
 ---
 
-## ServeRest
+## DummyJSON
 
-Swagger: https://serverest.dev/doc
+Docs: https://dummyjson.com/docs

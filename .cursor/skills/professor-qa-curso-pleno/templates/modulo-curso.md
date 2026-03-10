@@ -36,7 +36,7 @@ Use este template para cada módulo gerado. Copie e preencha.
 ### Exercício 1: [Título]
 - **Objetivo:** [O que o aluno deve praticar]
 - **Enunciado:** [Instruções claras e passo a passo]
-- **Recursos:** [ServeRest, Postman, Cypress, etc.]
+- **Recursos:** [DummyJSON, Postman, Cypress, etc.]
 - **Resposta esperada:** [Solução ou critérios de correção]
 
 ### Exercício 2: [Título]

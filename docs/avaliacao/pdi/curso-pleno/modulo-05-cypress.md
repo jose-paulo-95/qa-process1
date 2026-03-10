@@ -148,7 +148,7 @@ d) Configurar timeouts
 
 ### Questão 4 (Prática)
 
-Escreva o código Cypress para: visitar https://serverest.dev, clicar no link que leva à documentação, e verificar que a URL contém "doc".
+Escreva o código Cypress para: usar cy.request e fazer GET em https://dummyjson.com/users/1, validando que o status é 200 e que o body contém a propriedade "id".
 
 ### Questão 5 (Dissertativa)
 
@@ -167,7 +167,7 @@ Crie um fixture usuario.json com nome e email. No spec, use o fixture para preen
 | 1 | b |
 | 2 | b |
 | 3 | b |
-| 4 | cy.visit('https://serverest.dev'); cy.contains('a', 'doc').click(); cy.url().should('include', 'doc'); (ou equivalente) |
+| 4 | cy.request('GET', 'https://dummyjson.com/users/1').then((r) => { expect(r.status).to.eq(200); expect(r.body).to.have.property('id'); }); (ou cy.request(...).its('body').should('have.property','id')) |
 | 5 | Classes CSS mudam com refatoração de layout; data-cy é estável e semântico para testes. Evita acoplamento com estilização. |
 | 6 | cy.fixture('usuario').then((u) => { cy.get('#nome').type(u.nome); cy.get('#email').type(u.email); }); |
 

@@ -17,7 +17,7 @@ Documento para apoiar os desafios declarados: **"Ser mais prático"**, **"Ter bo
 - [ ] Semanalmente: dedicar 1 bloco só para "prática livre" (sem material, só fazer)
 
 ### Aplicar no Projeto Real
-- O que aprendi no ServeRest → como usaria nas APIs do meu projeto (TruMe, DeepClaim)?
+- O que aprendi no DummyJSON → como usaria nas APIs do meu projeto (TruMe, DeepClaim)?
 - Listar 2-3 endpoints do projeto atual e criar requests equivalentes no Postman
 - Pedir na mentoria: "Como conectar isso ao que testo no dia a dia?"
 

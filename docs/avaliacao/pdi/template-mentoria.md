@@ -28,7 +28,7 @@ uma sessão de mentoria para discutir [tema da fase atual].
 **Tópicos que gostaria de abordar:**
 - [Ex: Criação de collections no Postman]
 - [Ex: Validação de respostas de API com scripts Tests]
-- [Ex: Dúvidas sobre o projeto ServeRest]
+- [Ex: Dúvidas sobre o projeto DummyJSON]
 
 **Minha disponibilidade:** [dias/horários]
 **Duração sugerida:** 45 minutos
@@ -42,13 +42,13 @@ Conforme a autoavaliação, priorizar tópicos que ajudem em:
 - **Ser mais prático** – exemplos aplicáveis ao projeto real
 - **Ter boas práticas** – código, scripts, reporte de bugs
 - **Técnicas de QA** – particionamento de equivalência, valor limite, edge cases
-- **Aplicar no projeto** – como conectar ServeRest/Postman ao TruMe, DeepClaim
+- **Aplicar no projeto** – como conectar DummyJSON/Postman ao TruMe, DeepClaim
 
 ## Roteiro por Fase
 
 ### Fase 1 (Meses 1-3) - Postman e API
 - Postman: collections, variáveis, scripts Pre/Test
-- Validação de API com ServeRest
+- Validação de API com DummyJSON
 - Swagger + importação no Postman
 - **Como aplicar no projeto atual** (endpoints reais)
 

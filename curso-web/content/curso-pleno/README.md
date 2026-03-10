@@ -52,8 +52,8 @@ Preparar o aluno para as competências de QA Pleno: autonomia, planejamento, aut
 
 ## Recursos
 
-- API ServeRest: https://serverest.dev/
-- Postman collection: [postman-serverest/](../../../docs/avaliacao/pdi/postman-serverest/)
+- API DummyJSON: https://dummyjson.com/
+- Postman collection: [postman-dummyjson/](../../../docs/avaliacao/pdi/postman-dummyjson/)
 - Boas práticas: [boas-praticas-qa.md](../../../docs/avaliacao/pdi/boas-praticas-qa.md)
 - Glossário: [glossario-qa.md](../../../docs/avaliacao/pdi/glossario-qa.md)
 - Templates: [bug-report](../../../templates/bug-report-template.md), [caso de teste](../../../templates/test-case-template.md), [plano de teste](../../../templates/test-plan-template.md)
