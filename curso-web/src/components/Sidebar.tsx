@@ -18,7 +18,7 @@ const MODULO_TITLES: Record<number, string> = {
   6: "Ferramentas e Processo",
 };
 
-const MODULOS_DISPLAY_ORDER = [1, 2, 7, 3, 4, 5, 6];
+const MODULOS_DISPLAY_ORDER = [1, 2, 3, 4, 5, 6, 7];
 
 const STORAGE_EXPANDED = "curso-qa-modules-expanded";
 

@@ -15,8 +15,8 @@ const MODULO_TITLES: Record<number, string> = {
   6: "Ferramentas e Processo",
 };
 
-/** Ordem de exibição: módulo 7 entra após técnicas (alinhado à sequência linear dos temas). */
-const MODULOS_DISPLAY_ORDER = [1, 2, 7, 3, 4, 5, 6];
+/** Ordem de exibição na UI: numérica 1…7 (o desbloqueio dos temas segue a ordem em `temas.ts`). */
+const MODULOS_DISPLAY_ORDER = [1, 2, 3, 4, 5, 6, 7];
 
 export function ModuleList() {
   const { isTemaCompleted, isTemaUnlocked } = useProgress();
