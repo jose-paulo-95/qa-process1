@@ -574,6 +574,94 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
       { id: "d", text: "Medir tempo de CPU", correct: false, feedbackWrong: "Performance tab mostra CPU." },
     ],
   },
+  {
+    id: "q-oplog-1",
+    temaSlug: "operadores-logicos",
+    question: "Em JavaScript, qual par melhor evita surpresas de tipo em asserts de teste (Postman/Cypress)?",
+    options: [
+      { id: "a", text: "`==` e `!=`", correct: false, feedbackWrong: "Esses operadores podem converter tipos antes de comparar (coerção), o que mascara bugs." },
+      { id: "b", text: "`===` e `!==`", correct: true, feedbackCorrect: "Correto! Igualdade estrita compara valor e tipo; é o padrão seguro em asserções." },
+      { id: "c", text: "`>` e `<` apenas", correct: false, feedbackWrong: "Comparações numéricas não substituem igualdade para strings, objetos ou status." },
+      { id: "d", text: "`&&` e `||`", correct: false, feedbackWrong: "São lógicos, não operadores de igualdade entre valores." },
+    ],
+  },
+  {
+    id: "q-oplog-2",
+    temaSlug: "operadores-logicos",
+    question: "O resultado de `5 >= 5` em JavaScript é:",
+    options: [
+      { id: "a", text: "`false`, porque 5 não é maior que 5", correct: false, feedbackWrong: "`>=` significa maior **ou igual**. Cinco é igual a cinco, então é verdadeiro." },
+      { id: "b", text: "`true`", correct: true, feedbackCorrect: "Correto! O limite inclusivo faz `5 >= 5` ser verdadeiro — essencial em testes de fronteira." },
+      { id: "c", text: "Erro de sintaxe", correct: false, feedbackWrong: "É sintaxe válida; o resultado é booleano." },
+      { id: "d", text: "`undefined`", correct: false, feedbackWrong: "Expressões de comparação retornam `true` ou `false`." },
+    ],
+  },
+  {
+    id: "q-oplog-3",
+    temaSlug: "operadores-logicos",
+    question: "A expressão `true && false` tem resultado:",
+    options: [
+      { id: "a", text: "`true`", correct: false, feedbackWrong: "O E (`&&`) só é verdadeiro quando **ambos** os lados são verdadeiros." },
+      { id: "b", text: "`false`", correct: true, feedbackCorrect: "Correto! Com um lado falso, o AND inteiro é falso." },
+      { id: "c", text: "`null`", correct: false, feedbackWrong: "AND de booleanos retorna booleano." },
+      { id: "d", text: "`undefined`", correct: false, feedbackWrong: "O resultado é `false`." },
+    ],
+  },
+  {
+    id: "q-oplog-4",
+    temaSlug: "operadores-logicos",
+    question: "A expressão `false || true` tem resultado:",
+    options: [
+      { id: "a", text: "`false`", correct: false, feedbackWrong: "OU (`||`) é verdadeiro se **pelo menos um** lado for verdadeiro." },
+      { id: "b", text: "`true`", correct: true, feedbackCorrect: "Correto! Basta um verdadeiro no OU inclusivo." },
+      { id: "c", text: "Erro em tempo de execução", correct: false, feedbackWrong: "É uma expressão válida e comum." },
+      { id: "d", text: "`0`", correct: false, feedbackWrong: "O resultado é booleano `true`." },
+    ],
+  },
+  {
+    id: "q-oplog-5",
+    temaSlug: "operadores-logicos",
+    question: "Em JavaScript, `!(5 === 5)` é:",
+    options: [
+      { id: "a", text: "`true`", correct: false, feedbackWrong: "`5 === 5` é `true`; negar vira `false`." },
+      { id: "b", text: "`false`", correct: true, feedbackCorrect: "Correto! A igualdade é verdadeira; a negação inverte para falso." },
+      { id: "c", text: "`undefined`", correct: false, feedbackWrong: "Negação de booleano retorna booleano." },
+      { id: "d", text: "`5 === 5` (sem negação)", correct: false, feedbackWrong: "A expressão com `!` retorna o oposto do resultado de `5 === 5`, ou seja `false`." },
+    ],
+  },
+  {
+    id: "q-oplog-6",
+    temaSlug: "operadores-logicos",
+    question: "A condição “idade entre 18 e 65 anos (inclusive)” costuma ser escrita como:",
+    options: [
+      { id: "a", text: "`idade > 18 && idade < 65`", correct: false, feedbackWrong: "Isso **exclui** 18 e 65; inclusive precisa de `>=` e `<=`." },
+      { id: "b", text: "`idade >= 18 && idade <= 65`", correct: true, feedbackCorrect: "Correto! Os dois limites entram no intervalo fechado." },
+      { id: "c", text: "`idade === 18 || idade === 65`", correct: false, feedbackWrong: "Isso só aceita exatamente 18 ou 65, não o intervalo inteiro." },
+      { id: "d", text: "`idade >= 18 || idade <= 65`", correct: false, feedbackWrong: "OU aqui tornaria quase sempre verdadeiro (ex.: idade 10 satisfaz idade <= 65)." },
+    ],
+  },
+  {
+    id: "q-oplog-7",
+    temaSlug: "operadores-logicos",
+    question: "Sobre curto-circuito em `A && B`:",
+    options: [
+      { id: "a", text: "Se `A` for falso, `B` pode não ser avaliado", correct: true, feedbackCorrect: "Correto! O resultado já é falso; muitas linguagens não avaliam `B`." },
+      { id: "b", text: "`B` sempre é avaliado, mesmo com `A` falso", correct: false, feedbackWrong: "Em JavaScript, `&&` curto-circuita: com `A` falso, `B` não roda." },
+      { id: "c", text: "Só ocorre com números", correct: false, feedbackWrong: "Curto-circuito vale para qualquer expressão booleana em `&&` / `||`." },
+      { id: "d", text: "É um erro de compilação", correct: false, feedbackWrong: "É comportamento definido da linguagem." },
+    ],
+  },
+  {
+    id: "q-oplog-8",
+    temaSlug: "operadores-logicos",
+    question: "Qual expressão nega corretamente “o código de resposta é 200”?",
+    options: [
+      { id: "a", text: "`!pm.response.code === 200` (sem parênteses)", correct: false, feedbackWrong: "Sem parênteses, a negação pode aplicar-se ao valor errado; use parênteses ou `!==`." },
+      { id: "b", text: "`pm.response.code !== 200`", correct: true, feedbackCorrect: "Correto! Forma clara e comum em asserts de API." },
+      { id: "c", text: "`pm.response.code === !200`", correct: false, feedbackWrong: "Sintaxe/semântica incorreta para essa intenção." },
+      { id: "d", text: "`pm.response.code < 200`", correct: false, feedbackWrong: "Isso não cobre todos os casos “não é 200” (ex.: 404 não é `< 200`)." },
+    ],
+  },
 ];
 
 export function getQuizByTema(temaSlug: string): QuizQuestion[] {
