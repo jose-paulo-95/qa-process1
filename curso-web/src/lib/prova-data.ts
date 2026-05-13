@@ -361,6 +361,63 @@ const PROVA_QUESTIONS: Record<number, QuizQuestion[]> = {
       ],
     },
   ],
+  7: [
+    {
+      id: "p7-q1",
+      temaSlug: "prova-7",
+      question: "Em asserts JavaScript (Postman/Cypress), por que `===` costuma ser preferível a `==`?",
+      options: [
+        { id: "a", text: "`===` é mais rápido", correct: false, feedbackWrong: "Performance não é o motivo principal." },
+        { id: "b", text: "`===` compara valor e tipo sem coerção implícita, evitando surpresas", correct: true, feedbackCorrect: "Correto! Igualdade estrita reflete melhor o que o teste quer validar." },
+        { id: "c", text: "`==` não existe em JavaScript", correct: false, feedbackWrong: "`==` existe; o problema é a coerção de tipos." },
+        { id: "d", text: "Ambos são sempre equivalentes", correct: false, feedbackWrong: "`5 == \"5\"` e `5 === \"5\"` têm resultados diferentes." },
+      ],
+    },
+    {
+      id: "p7-q2",
+      temaSlug: "prova-7",
+      question: "O resultado de `true && false` é:",
+      options: [
+        { id: "a", text: "`true`", correct: false, feedbackWrong: "O E (`&&`) exige ambos verdadeiros." },
+        { id: "b", text: "`false`", correct: true, feedbackCorrect: "Correto! Um lado falso torna o AND falso." },
+        { id: "c", text: "`undefined`", correct: false, feedbackWrong: "O resultado é booleano." },
+        { id: "d", text: "`null`", correct: false, feedbackWrong: "O resultado é booleano." },
+      ],
+    },
+    {
+      id: "p7-q3",
+      temaSlug: "prova-7",
+      question: "Para idade entre 18 e 65 anos (limites inclusive), a condição típica é:",
+      options: [
+        { id: "a", text: "`idade > 18 && idade < 65`", correct: false, feedbackWrong: "Isso exclui 18 e 65." },
+        { id: "b", text: "`idade >= 18 && idade <= 65`", correct: true, feedbackCorrect: "Correto! Inclusive usa `>=` e `<=`." },
+        { id: "c", text: "`idade === 18 || idade === 65`", correct: false, feedbackWrong: "Só testa os dois extremos isolados." },
+        { id: "d", text: "`idade >= 18 || idade <= 65`", correct: false, feedbackWrong: "OU tornaria quase sempre verdadeiro." },
+      ],
+    },
+    {
+      id: "p7-q4",
+      temaSlug: "prova-7",
+      question: "Em `A && B`, se `A` é falso e o ambiente usa curto-circuito (como JavaScript), então:",
+      options: [
+        { id: "a", text: "`B` pode não ser avaliado", correct: true, feedbackCorrect: "Correto! O resultado já é falso." },
+        { id: "b", text: "`B` sempre é avaliado", correct: false, feedbackWrong: "JavaScript não avalia `B` quando `A` já é falso." },
+        { id: "c", text: "Ocorre erro de sintaxe", correct: false, feedbackWrong: "É comportamento válido." },
+        { id: "d", text: "O resultado é `undefined`", correct: false, feedbackWrong: "O resultado é `false`." },
+      ],
+    },
+    {
+      id: "p7-q5",
+      temaSlug: "prova-7",
+      question: "Para negar corretamente “status HTTP é 200” em um assert, uma forma clara é:",
+      options: [
+        { id: "a", text: "`!pm.response.code === 200` sem parênteses", correct: false, feedbackWrong: "Precedência do `!` pode gerar assert errado; use parênteses ou `!==`." },
+        { id: "b", text: "`pm.response.code !== 200`", correct: true, feedbackCorrect: "Correto! Comparação estrita de desigualdade." },
+        { id: "c", text: "`pm.response.code < 200`", correct: false, feedbackWrong: "Não cobre todos os códigos diferentes de 200." },
+        { id: "d", text: "`pm.response.code = 200`", correct: false, feedbackWrong: "Atribuição (`=`) não é comparação." },
+      ],
+    },
+  ],
 };
 
 const MODULO_TITLES: Record<number, string> = {
@@ -370,6 +427,7 @@ const MODULO_TITLES: Record<number, string> = {
   4: "Swagger e Contratos",
   5: "Automação Cypress",
   6: "Ferramentas e Processo",
+  7: "Operadores lógicos e comparação",
 };
 
 export function getProvaByModulo(moduloId: number): ProvaConfig | null {

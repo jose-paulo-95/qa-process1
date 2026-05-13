@@ -16,6 +16,13 @@ A Vercel é a plataforma oficial do Next.js e oferece plano gratuito.
 ### Passos
 
 1. **Enviar o projeto para o GitHub**
+
+   Escolha **uma** das situações abaixo.
+
+   **A) Primeira vez — pasta ainda não é um repositório Git**
+
+   Troque `SEU-USUARIO` pela sua conta do GitHub e o nome do repositório, se for diferente.
+
    ```bash
    cd c:\Projetos\qa-process1
    git init
@@ -25,6 +32,27 @@ A Vercel é a plataforma oficial do Next.js e oferece plano gratuito.
    git remote add origin https://github.com/SEU-USUARIO/qa-process1.git
    git push -u origin main
    ```
+
+   **B) Repositório já existe** (você clonou o projeto ou já rodou `git init` antes)
+
+   Não execute `git init` de novo nem `git remote add origin` se o remote `origin` já estiver configurado (isso gera erro “remote origin already exists”). Confira com:
+
+   ```bash
+   cd c:\Projetos\qa-process1
+   git remote -v
+   ```
+
+   Para publicar alterações:
+
+   ```bash
+   git add .
+   git commit -m "Descreva a alteração em uma frase"
+   git branch -M main
+   git push -u origin main
+   ```
+
+   Se ainda não houver `origin`, aí sim use uma única vez:  
+   `git remote add origin https://github.com/SEU-USUARIO/qa-process1.git`
 
 2. **Importar na Vercel**
    - Acesse [vercel.com/new](https://vercel.com/new)

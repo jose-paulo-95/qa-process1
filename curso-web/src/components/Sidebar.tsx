@@ -11,16 +11,19 @@ import { ProgressBar } from "./ProgressBar";
 const MODULO_TITLES: Record<number, string> = {
   1: "Fundamentos de QA (CTFL 4.0)",
   2: "Técnicas de Teste (CTFL 4.0)",
+  7: "Operadores lógicos e comparação",
   3: "Testes de API",
   4: "Swagger e Contratos",
   5: "Automação Cypress",
   6: "Ferramentas e Processo",
 };
 
+const MODULOS_DISPLAY_ORDER = [1, 2, 7, 3, 4, 5, 6];
+
 const STORAGE_EXPANDED = "curso-qa-modules-expanded";
 
 function loadExpanded(): Record<number, boolean> {
-  const defaultAll = { 1: true, 2: true, 3: true, 4: true, 5: true, 6: true };
+  const defaultAll = { 1: true, 2: true, 7: true, 3: true, 4: true, 5: true, 6: true };
   if (typeof window === "undefined") return defaultAll;
   try {
     const raw = localStorage.getItem(STORAGE_EXPANDED);
@@ -44,7 +47,7 @@ export function Sidebar() {
   const { isTemaCompleted, isTemaUnlocked, isProvaCompleted, isProvaUnlocked } = useProgress();
   const { isProfessorMode, withProfessorParam } = useProfessorMode();
   const firstIncompleteTema = TEMAS.find((t) => isTemaUnlocked(t.slug) && !isTemaCompleted(t.slug));
-  const defaultExpanded = { 1: true, 2: true, 3: true, 4: true, 5: true, 6: true };
+  const defaultExpanded = { 1: true, 2: true, 7: true, 3: true, 4: true, 5: true, 6: true };
   const [expanded, setExpanded] = useState<Record<number, boolean>>(defaultExpanded);
 
   useEffect(() => {
@@ -57,7 +60,7 @@ export function Sidebar() {
     saveExpanded(next);
   };
 
-  const modulos = [1, 2, 3, 4, 5, 6];
+  const modulos = MODULOS_DISPLAY_ORDER;
 
   return (
     <aside className="flex w-72 shrink-0 flex-col overflow-hidden border-r border-zinc-200 bg-gradient-to-b from-zinc-50 to-white dark:border-zinc-800 dark:from-zinc-900 dark:to-zinc-950">

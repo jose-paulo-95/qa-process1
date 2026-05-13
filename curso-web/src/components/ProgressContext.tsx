@@ -103,14 +103,14 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     [state.completedTemas, isProfessorMode]
   );
 
-  const totalItems = TEMAS.length + 6;
+  const totalItems = TEMAS.length + 7;
   const completedItems =
     state.completedTemas.length + state.completedProvas.length;
   const progressPercent = getProgressPercent(
     state.completedTemas.length,
     state.completedProvas.length,
     TEMAS.length,
-    6
+    7
   );
 
   return (

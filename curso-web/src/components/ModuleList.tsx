@@ -8,16 +8,20 @@ import { useProfessorMode } from "./ProfessorContext";
 const MODULO_TITLES: Record<number, string> = {
   1: "Fundamentos de QA (CTFL 4.0)",
   2: "Técnicas de Teste (CTFL 4.0)",
+  7: "Operadores lógicos e comparação",
   3: "Testes de API",
   4: "Swagger e Contratos",
   5: "Automação Cypress",
   6: "Ferramentas e Processo",
 };
 
+/** Ordem de exibição: módulo 7 entra após técnicas (alinhado à sequência linear dos temas). */
+const MODULOS_DISPLAY_ORDER = [1, 2, 7, 3, 4, 5, 6];
+
 export function ModuleList() {
   const { isTemaCompleted, isTemaUnlocked } = useProgress();
   const { isProfessorMode, withProfessorParam } = useProfessorMode();
-  const modulos = [1, 2, 3, 4, 5, 6];
+  const modulos = MODULOS_DISPLAY_ORDER;
 
   return (
     <div className="space-y-6">

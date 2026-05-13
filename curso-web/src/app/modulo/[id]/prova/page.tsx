@@ -5,7 +5,7 @@ import { ReferenciasModulo } from "@/components/ReferenciasModulo";
 import { ProvaBreadcrumb } from "@/components/ProvaBreadcrumb";
 
 export async function generateStaticParams() {
-  return [1, 2, 3, 4, 5, 6].map((id) => ({ id: String(id) }));
+  return [1, 2, 3, 4, 5, 6, 7].map((id) => ({ id: String(id) }));
 }
 
 export default async function ProvaPage({
@@ -15,7 +15,7 @@ export default async function ProvaPage({
 }) {
   const { id } = await params;
   const moduloId = parseInt(id, 10);
-  if (isNaN(moduloId) || moduloId < 1 || moduloId > 6) notFound();
+  if (isNaN(moduloId) || moduloId < 1 || moduloId > 7) notFound();
 
   const prova = getProvaByModulo(moduloId);
   if (!prova) notFound();

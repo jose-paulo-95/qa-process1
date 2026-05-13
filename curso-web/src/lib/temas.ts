@@ -22,11 +22,12 @@ export const TEMAS: Tema[] = [
   { slug: "10-valor-limite", title: "Análise de valor limite", moduloId: 2, moduloTitle: "Técnicas de Teste", order: 10 },
   { slug: "11-casos-positivos-negativos", title: "Casos positivos e negativos", moduloId: 2, moduloTitle: "Técnicas de Teste", order: 11 },
   { slug: "12-tabela-decisao-transicao-estados", title: "Tabela de decisão e transição de estados", moduloId: 2, moduloTitle: "Técnicas de Teste", order: 12 },
-  { slug: "operadores-logicos", title: "Operadores lógicos e de comparação", moduloId: 2, moduloTitle: "Técnicas de Teste", order: 12.5 },
   { slug: "13-caixa-branca-experiencia", title: "Caixa branca e técnicas baseadas em experiência", moduloId: 2, moduloTitle: "Técnicas de Teste", order: 13 },
   { slug: "14-bdd-atdd", title: "BDD e ATDD", moduloId: 2, moduloTitle: "Técnicas de Teste", order: 14 },
   { slug: "15-planejamento-riscos", title: "Planejamento e gerenciamento de riscos", moduloId: 2, moduloTitle: "Técnicas de Teste", order: 15 },
   { slug: "16-monitoramento-defeitos", title: "Monitoramento e ciclo de vida de defeitos", moduloId: 2, moduloTitle: "Técnicas de Teste", order: 16 },
+  // Módulo 7 - Operadores lógicos e comparação (base para scripts, asserts e critérios)
+  { slug: "operadores-logicos", title: "Operadores lógicos e de comparação", moduloId: 7, moduloTitle: "Operadores lógicos e comparação", order: 1 },
   // Módulo 3 - Testes de API (Descomplicando completo + Postman)
   { slug: "17-api-rest-fundamentos-mentalidade", title: "API Rest: fundamentos e mentalidade", moduloId: 3, moduloTitle: "Testes de API", order: 17 },
   { slug: "18-api-rest-anatomia-http", title: "API Rest: anatomia HTTP", moduloId: 3, moduloTitle: "Testes de API", order: 18 },

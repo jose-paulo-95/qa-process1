@@ -12,6 +12,7 @@ export const MODULOS: Modulo[] = [
   { slug: "modulo-04-swagger", title: "Swagger e Contratos", duration: "~4h", order: 4 },
   { slug: "modulo-05-cypress", title: "Automação Cypress", duration: "~8h", order: 5 },
   { slug: "modulo-06-ferramentas", title: "Ferramentas e Processo", duration: "~5h", order: 6 },
+  { slug: "modulo-07-operadores-logicos", title: "Operadores lógicos e comparação", duration: "~2h", order: 7 },
 ];
 
 export function getModuloSlugs(): string[] {

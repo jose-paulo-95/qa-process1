@@ -162,4 +162,24 @@ export const REFERENCIAS_POR_MODULO: Record<number, Referencia[]> = {
       description: "Vídeos sobre Git e Jira para testadores",
     },
   ],
+  7: [
+    {
+      title: "MDN — Expressões e operadores (JavaScript)",
+      url: "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Expressions_and_operators",
+      type: "documentacao",
+      description: "Referência oficial: comparação, igualdade, lógicos, precedência",
+    },
+    {
+      title: "MDN — Operadores lógicos",
+      url: "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators",
+      type: "documentacao",
+      description: "&&, ||, ! e tabelas de comportamento",
+    },
+    {
+      title: "JavaScript para iniciantes — operadores",
+      url: "https://www.youtube.com/results?search_query=javascript+operadores+logica+comparacao+iniciantes",
+      type: "video",
+      description: "Vídeos introdutórios sobre operadores em JS",
+    },
+  ],
 };

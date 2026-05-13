@@ -1,6 +1,6 @@
 # Operadores lógicos e de comparação (guia para iniciantes)
 
-**Módulo 2 — Técnicas de Teste**
+**Módulo 7 — Operadores lógicos e comparação**
 
 Este tema assume **nenhum conhecimento prévio** de programação. O foco é **ler e escrever condições** como aparecem em critérios de aceite, **Postman (Tests)** e **Cypress (JavaScript)**. A referência de sintaxe é **JavaScript**, porque é a mesma família usada na maior parte dos exemplos do curso.
 
